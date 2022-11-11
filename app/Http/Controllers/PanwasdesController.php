@@ -23,10 +23,14 @@ class PanwasdesController extends Controller
     public function search($tahun, Request $request){
         $selectedYear = $tahun;
         $query = $request->search;
-        $listPengawas = Panwasdes::where('tahun', $tahun)
-                        ->where('nama', 'like', "%".$query."%")
-                        ->orWhere('kecamatan', 'like', "%".$query."%")
-                        ->paginate(10);
+        if(!is_null($request->search)){
+            $listPengawas = Panwasdes::where('tahun', $tahun)
+                            ->where('nama', 'like', "%".$query."%")
+                            ->orWhere('kecamatan', 'like', "%".$query."%")
+                            ->paginate(10);
+        } else {
+            $listPengawas = Panwasdes::where('tahun', $tahun)->orderBy('nama', 'asc')->paginate(10);
+        }
         return view('panwasdes.index', compact('selectedYear', 'listPengawas'));
     }
 }

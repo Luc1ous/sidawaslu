@@ -26,13 +26,15 @@ class PanwastpsController extends Controller
     public function search($tahun, Request $request){
         $selectedYear = $tahun;
         $query = $request->search;
-        $listPengawas = Panwastps::where('tahun', $tahun)
-                        ->where('nama', 'like', "%".$query."%")
-                        ->orWhere('kecamatan', 'like', "%".$query."%")
-                        ->paginate(10);
+        if(!is_null($request->search)){
+            $listPengawas = Panwastps::where('tahun', $tahun)
+                            ->where('nama', 'like', "%".$query."%")
+                            ->orWhere('kecamatan', 'like', "%".$query."%")
+                            ->paginate(10);
+        } else {
+            $listPengawas = Panwastps::where('tahun', $tahun)->orderBy('nama', 'asc')->paginate(10);
+        }
 
         return view('panwastps.index', compact('selectedYear', 'listPengawas'));
     }
-
-
 }

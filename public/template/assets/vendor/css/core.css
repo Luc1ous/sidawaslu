@@ -15534,7 +15534,7 @@ html:not(.layout-footer-fixed) .content-wrapper {
   }
 
   .layout-content-navbar .layout-navbar {
-    z-index: 9;
+    z-index: 2;
   }
   .layout-content-navbar .layout-menu {
     z-index: 10;

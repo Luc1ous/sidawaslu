@@ -59,8 +59,13 @@ Route::controller(PengalamanKepemiluanController::class)->middleware('auth')->gr
 // Route Panwascam
 Route::controller(PanwascamController::class)->middleware('auth')->group(function(){
     Route::get('/panwascam/{tahun}', 'index');
+    Route::get('/panwascam/{tahun}/add', 'add');
+    Route::post('/panwascam/{tahun}/store', 'store');
+    Route::post('/panwascam/{tahun}/{id}/update', 'update');
+    Route::get('/panwascam/edit/{tahun}/{id}', 'edit');
     Route::get('/panwascam/{tahun}/search', 'search');
     Route::post('/panwascam/import', 'import');
+    Route::post('/panwascam/delete/{id}', 'delete');
 });
 
 // Route Panwasdes

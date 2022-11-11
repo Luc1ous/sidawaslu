@@ -1,7 +1,12 @@
 @extends('base.main', ['title' => 'Data Panwascam'])
 @section('content')
-  <div class="card">
-    <div class="card-header">
+
+<div class="card">
+  <div class="card-header">
+      <div class="alert alert-success alert-dismissible" role="alert">
+        Data berhasil diupdate
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
       <h3>Data Panwascam Tahun
         {{ $selectedYear }}
       </h3>
@@ -20,7 +25,7 @@
             </div>
           </form>
         </div>
-        <a href="" class="btn btn-primary">
+        <a href="/panwascam/{{ $selectedYear }}/add" class="btn btn-primary">
           <i class='bx bx-plus'></i>
           Add Data
         </a>
@@ -65,6 +70,28 @@
           </thead>
           <tbody>
             @forelse ( $listPengawas as $index => $pengawas )
+              <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header text-center">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                      <h4>Delete Confirmation</h4>
+                      <p>Apakah Anda yakin ingin menghapus Data : {{ $pengawas->nama }} ?</p>
+                      <p>
+                        <span class="fw-bold">Notice : </span>
+                        Data yang terhapus tidak bisa dikembalikan lagi
+                      </p>
+                      <form action="/panwascam/delete/{{ $pengawas->id }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-danger">Hapus</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <tr>
                 <td>{{ $listPengawas->firstItem() + $index }}</td>
                 <td>{{ $pengawas->nama }}</td>
@@ -74,7 +101,14 @@
                 <td>{{ $pengawas->pendidikan }}</td>
                 <td>{{ $pengawas->tahun }}</td>
                 <td>
-                  <a href="/panwascam/{{ $pengawas->id }}" class="btn btn-sm btn-secondary">View</a>
+                  <a href="/panwascam/edit/{{ $selectedYear }}/{{ $pengawas->id }}" class="btn btn-sm btn-warning">
+                    <i class="bi bi-pencil-square"></i>
+                    Edit
+                  </a>
+                  <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
+                    <i class="bi bi-trash3-fill"></i>
+                    Hapus
+                  </button>
                 </td>
               </tr>
             @empty

@@ -20,7 +20,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../template/assets/img/sidawaslu.png" />
+    <link rel="icon" type="image/x-icon" href="../../template/assets/img/sidawaslu.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,24 +31,25 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../../template/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href={{ asset("template/assets/vendor/fonts/boxicons.css") }} />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="../../template/assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../../template/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="../../template/assets/css/demo.css" />
+    <link rel="stylesheet" href={{ asset("template/assets/vendor/css/core.css") }} class="template-customizer-core-css" />
+    <link rel="stylesheet" href={{ asset("template/assets/vendor/css/theme-default.css") }} class="template-customizer-theme-css" />
+    <link rel="stylesheet" href={{ asset("template/assets/css/demo.css") }} />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../../template/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href={{ asset("template/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css") }} />
 
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="../../template/assets/vendor/js/helpers.js"></script>
+    <script src={{ asset("template/assets/vendor/js/helpers.js") }}></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../../template/assets/js/config.js"></script>
+    <script src={{ asset("template/assets/js/config.js") }}></script>
   </head>
 
   <body>
@@ -57,7 +58,7 @@
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-theme text-white">
           <div class="app-brand demo d-flex flex-column">
             <a href="" class="app-brand-link d-flex flex-row align-items-center">
-              <img src="../../template/assets/img/sidawaslu.png" alt="" width="45">
+              <img src={{ asset("template/assets/img/sidawaslu.png") }} alt="" width="45">
               <span class="app-brand-text demo menu-text fw-bolder text-uppercase ms-2">sidawaslu</span>
             </a>
           </div>
@@ -158,7 +159,7 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="../../template/assets/img/profile.png" alt class="w-px-40 h-auto rounded-circle" />
+                      <img src={{ asset("template/assets/img/profile.png") }} alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -167,7 +168,7 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="../../template/assets/img/profile.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src={{ asset("template/assets/img/profile.png") }} alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
@@ -192,6 +193,7 @@
             </div>
           </nav>
           <!-- Content wrapper -->
+          @include('sweetalert::alert')
           <div class="content-wrapper">
             <!-- Content -->
             <div class="container-xxl flex-grow-1 container-p-y">
@@ -203,16 +205,17 @@
       </div>
     </div>
 
+    @stack('script')
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="../../template/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../../template/assets/vendor/libs/popper/popper.js"></script>
-    <script src="../../template/assets/vendor/js/bootstrap.js"></script>
-    <script src="../../template/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src={{ asset("template/assets/vendor/libs/jquery/jquery.js") }}></script>
+    <script src={{ asset("template/assets/vendor/libs/popper/popper.js") }}></script>
+    <script src={{ asset("template/assets/vendor/js/bootstrap.js") }}></script>
+    <script src={{ asset("template/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js") }}></script>
 
-    <script src="../../template/assets/vendor/js/menu.js"></script>
+    <script src={{ asset("template/assets/vendor/js/menu.js") }}></script>
 
     <!-- Main JS -->
-    <script src="../../template/assets/js/main.js"></script>
+    <script src={{ asset("template/assets/js/main.js") }}></script>
 
     <!-- Page JS -->
 

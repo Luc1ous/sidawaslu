@@ -11,7 +11,7 @@
       <h2 class="text-dark fw-semibold">Selamat Datang di Sidawaslu</h2>
     </div>                
   </div>
-
+  <h4>Total Data Pengawas</h4>
   <div class="row">
     <div class="col-4">
       <div class="card">

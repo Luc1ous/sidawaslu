@@ -74,7 +74,10 @@
                 <td>{{ $pengawas->tanggal_lahir }}</td>
                 <td>{{ $pengawas->tahun }}</td>
                 <td>
-                  <a href="/panwascam/{{ $pengawas->id }}" class="btn btn-sm btn-secondary">View</a>
+                  <a href="/panwascam/{{ $selectedYear }}/{{ $pengawas->id }}" class="btn btn-sm btn-secondary">
+                    <i class="bi bi-eye-fill"></i>
+                    View
+                  </a>
                 </td>
               </tr>
             @empty
