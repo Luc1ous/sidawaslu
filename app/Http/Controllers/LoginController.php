@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -19,10 +20,12 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
+            Alert::success('Login Sukses', 'Anda berhasil login')->autoClose(2000);
             return redirect()->intended('/');
+        } else {
+            return back()->with('error', 'Login gagal, silahkan coba lagi !');
         }
         
-        return back()->with('error', 'Login gagal, silahkan coba lagi !');
     }
 
     public function logout(Request $request){

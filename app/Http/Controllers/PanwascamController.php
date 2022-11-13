@@ -8,6 +8,7 @@ use App\Models\Panwascam;
 use App\Models\PengalamanKepemiluan;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PanwascamController extends Controller
 {
@@ -23,15 +24,28 @@ class PanwascamController extends Controller
     }
 
     public function store(PanwascamRequest $request, $tahun){
-        $request["pengalaman_kepemiluan"] = implode("\n", $request->pengalaman_kepemiluan);
+        if($request->pengalaman_kepemiluan){
+            $request["pengalaman_kepemiluan"] = implode("\n", $request->pengalaman_kepemiluan);
+        } else {
+            $request["pengalaman_kepemiluan"] = '-';
+        }
         $request["tahun"] = $tahun;
         Panwascam::create($request->all());
-        return redirect()->to("/panwascam/".$tahun);
+        return redirect()->to("/panwascam/".$tahun)->with('success', 'Data berhasil ditambahkan');
     }
 
     public function import(Request $request){
-        Excel::import(new PanwascamImport, $request->file('file'));
-        return redirect()->back();
+        $request->validate([
+            'file' => 'required'
+        ]);
+
+        $data = Excel::import(new PanwascamImport, $request->file('file'));
+        if ($data) {
+            return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
+        } else {
+            Alert::error('Gagal', 'Data gagal di Import, pastikan format sudah benar !');
+            return redirect()->back();
+        }
     }
 
     public function search($tahun, Request $request){
@@ -58,11 +72,11 @@ class PanwascamController extends Controller
     public function update(PanwascamRequest $request, $tahun, $id){
         $request['tahun'] = $tahun;
         Panwascam::find($id)->update($request->all());
-        return redirect()->to('/panwascam/'.$tahun);
+        return redirect()->to('/panwascam/'.$tahun)->with('success', 'Data berhasil diupdate');
     }
 
     public function delete($id){
         Panwascam::find($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }

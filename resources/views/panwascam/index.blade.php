@@ -3,10 +3,12 @@
 
 <div class="card">
   <div class="card-header">
-      <div class="alert alert-success alert-dismissible" role="alert">
-        Data berhasil diupdate
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+      @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <span class="fw-bold">Sukses : </span> {{ session('success') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
       <h3>Data Panwascam Tahun
         {{ $selectedYear }}
       </h3>
@@ -101,7 +103,7 @@
                 <td>{{ $pengawas->pendidikan }}</td>
                 <td>{{ $pengawas->tahun }}</td>
                 <td>
-                  <a href="/panwascam/edit/{{ $selectedYear }}/{{ $pengawas->id }}" class="btn btn-sm btn-warning">
+                  <a href="/panwascam/{{ $selectedYear }}/{{ $pengawas->id }}/edit" class="btn btn-sm btn-warning">
                     <i class="bi bi-pencil-square"></i>
                     Edit
                   </a>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tahun;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TahunController extends Controller
 {
@@ -28,8 +29,9 @@ class TahunController extends Controller
 
         if($validate){
             Tahun::create($validate);
-            return redirect()->to('/tahun');
+            return redirect()->to('/tahun')->with('success', 'Data berhasil ditambahkan');
         } else {
+            Alert::error('Gagal', 'Data gagal ditambahkan, silahkan ulangi !');
             return redirect()->back();
         }
     }
@@ -48,8 +50,9 @@ class TahunController extends Controller
 
         if($validate){
             Tahun::where('id', $id)->update($validate);
-            return redirect()->to('/tahun');
+            return redirect()->to('/tahun')->with('success', 'Data berhasil diupdate');
         } else {
+            Alert::error('Gagal', 'Data gagal diupdate, silahkan ulangi !');
             return redirect()->back();
         }
     }
@@ -57,6 +60,6 @@ class TahunController extends Controller
     public function delete($id)
     {
         Tahun::where('id', $id)->delete();
-        return redirect()->to('/tahun');
+        return redirect()->to('/tahun')->with('success', 'Data berhasil dihapus');
     }
 }

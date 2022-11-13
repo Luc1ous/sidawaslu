@@ -6,6 +6,7 @@ use App\Http\Controllers\PanwascamController;
 use App\Http\Controllers\PanwasdesController;
 use App\Http\Controllers\PanwastpsController;
 use App\Http\Controllers\PengalamanKepemiluanController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TahunController;
 use App\Http\Controllers\UserController;
 use App\Models\Panwastps;
@@ -27,6 +28,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
+
+// Route Register
+// Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/checkCode', [RegisterController::class, 'check'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'register']);
 
 // Route Dashboard
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
@@ -62,7 +68,7 @@ Route::controller(PanwascamController::class)->middleware('auth')->group(functio
     Route::get('/panwascam/{tahun}/add', 'add');
     Route::post('/panwascam/{tahun}/store', 'store');
     Route::post('/panwascam/{tahun}/{id}/update', 'update');
-    Route::get('/panwascam/edit/{tahun}/{id}', 'edit');
+    Route::get('/panwascam/{tahun}/{id}/edit', 'edit');
     Route::get('/panwascam/{tahun}/search', 'search');
     Route::post('/panwascam/import', 'import');
     Route::post('/panwascam/delete/{id}', 'delete');
@@ -73,6 +79,11 @@ Route::controller(PanwasdesController::class)->middleware('auth')->group(functio
     Route::get('/panwasdes/{tahun}', 'index');
     Route::get('/panwasdes/{tahun}/search', 'search');
     Route::post('/panwasdes/import', 'import');
+    Route::get('/panwasdes/{tahun}/add', 'add');
+    Route::post('/panwasdes/{tahun}/store', 'store');
+    Route::get('/panwasdes/{tahun}/{id}/edit', 'edit');
+    Route::post('/panwasdes/{tahun}/{id}/update', 'update');
+    Route::post('/panwasdes/delete/{id}', 'delete');
 });
 
 // Route Panwas TPS
@@ -80,4 +91,9 @@ Route::controller(PanwastpsController::class)->middleware('auth')->group(functio
     Route::get('/panwastps/{tahun}', 'index');
     Route::get('/panwastps/{tahun}/search', 'search');
     Route::post('/panwastps/import', 'import');
+    Route::get('/panwastps/{tahun}/add', 'add');
+    Route::post('/panwastps/{tahun}/store', 'store');
+    Route::get('/panwastps/{tahun}/{id}/edit', 'edit');
+    Route::post('/panwastps/{tahun}/{id}/update', 'update');
+    Route::post('/panwastps/delete/{id}', 'delete');
 });

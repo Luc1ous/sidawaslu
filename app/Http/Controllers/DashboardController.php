@@ -13,12 +13,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 class DashboardController extends Controller
 {
     public function index(){
-        $panwascam = Panwascam::all()->count();
+        $panwascam = Panwascam::distinct('nik')->count();
         $panwasdes = Panwasdes::all()->count();
         $panwastps = Panwastps::all()->count();
 
         $date = Carbon::now()->isoFormat('dddd, D MMMM Y');
-
         return view('dashboard', compact([
             'date',
             'panwascam',

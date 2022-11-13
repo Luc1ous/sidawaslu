@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PengalamanKepemiluan;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PengalamanKepemiluanController extends Controller
 {
@@ -24,8 +25,9 @@ class PengalamanKepemiluanController extends Controller
 
         if ($validate) {
             PengalamanKepemiluan::create($validate);
-            return redirect()->to('/pengalaman');
+            return redirect()->to('/pengalaman')->with('success', 'Data berhasil ditambahkan');
         } else {
+            Alert::error('Gagal', 'Data gagal ditambahkan, silahkan ulangi !');
             return redirect()->back();
         }
     }
@@ -42,14 +44,15 @@ class PengalamanKepemiluanController extends Controller
 
         if($validate){
             PengalamanKepemiluan::where('id', $id)->update($validate);
-            return redirect()->to('/pengalaman');
+            return redirect()->to('/pengalaman')->with('success', 'Data berhasil diupdate');
         } else {
+            Alert::error('Gagal', 'Data gagal diupdate, silahkan ulangi !');
             return redirect()->back();
         }
     }
 
     public function delete($id){
         PengalamanKepemiluan::where('id', $id)->delete();
-        return redirect()->to('/pengalaman');
+        return redirect()->to('/pengalaman')->with('success', 'Data berhasil dihapus');
     }
 }

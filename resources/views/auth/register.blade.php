@@ -15,7 +15,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Login | Sidawaslu</title>
+    <title>Register | Sidawaslu</title>
 
     <meta name="description" content="" />
 
@@ -53,23 +53,6 @@
   </head>
 
   <body>
-    <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body text-center">
-            <h4>Masukkan Kode : </h4>
-            <form action="/checkCode" method="POST">
-              @csrf
-              <input type="text" name="kode" class="form-control text-center">
-              <button type="submit" class="btn btn-success mt-3">Send</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
@@ -83,10 +66,28 @@
             <div class="card-body">
               <div class="text-center">
                 <img src="../template/assets/img/sidawaslu.png" width="55" class="mb-2">
-                <h4 class="mb-4 fw-bold text-center text-uppercase">Login Sidawaslu</h4>
+                <h4 class="mb-4 fw-bold text-center text-uppercase">Register Sidawaslu</h4>
               </div>
-              <form class="mb-3" action="/login" method="POST">
+              <form class="mb-3" action="/register" method="POST">
                 @csrf
+                <div class="mb-3">
+                  <label for="email" class="form-label">Username</label>
+                  <input
+                    type="text"
+                    class="form-control @error('name')
+                     is-invalid 
+                    @enderror"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your username"
+                    autofocus
+                  />
+                  @error('name')
+                    <div class="invalid-feedback">
+                      {{  $message  }}
+                    </div>
+                  @enderror
+                </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
                   <input
@@ -128,7 +129,7 @@
                     @enderror
                   </div>
                 </div>
-                <p class="mb-3">Belum mempunyai akun ? <a href="" class="text-primary" data-bs-toggle="modal" data-bs-target="#basicModal" >Register</a></p>
+                <p class="mb-3">Sudah mempunyai akun ? <a href="/login" class="text-primary">Login</a></p>
                 <div class="mb-3">
                   <button class="btn btn-success d-grid w-100" type="submit">Sign in</button>
                 </div>

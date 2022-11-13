@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PanwasdesRequest;
 use App\Imports\PanwasdesImport;
 use App\Models\Panwasdes;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PanwasdesController extends Controller
 {
@@ -13,11 +15,6 @@ class PanwasdesController extends Controller
         $selectedYear = $tahun;
         $listPengawas = Panwasdes::where('tahun', $tahun)->orderBy('nama', 'asc')->paginate(10);
         return view('panwasdes.index', compact('selectedYear', 'listPengawas'));
-    }
-
-    public function import(Request $request){
-        Excel::import(new PanwasdesImport, $request->file('file'));
-        return redirect()->back();
     }
 
     public function search($tahun, Request $request){
@@ -32,5 +29,44 @@ class PanwasdesController extends Controller
             $listPengawas = Panwasdes::where('tahun', $tahun)->orderBy('nama', 'asc')->paginate(10);
         }
         return view('panwasdes.index', compact('selectedYear', 'listPengawas'));
+    }
+
+    public function import(Request $request){
+        $request->validate([
+            'file' => 'required'
+        ]);
+        $data = Excel::import(new PanwasdesImport, $request->file('file'));
+        if($data){
+            return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
+        } else {
+            Alert::error('Gagal', 'Data gagal di Import, pastikan format sudah benar !');
+            return redirect()->back();
+        }
+    }
+
+    public function add($tahun){
+        return view('panwasdes.add', compact('tahun'));
+    }
+
+    public function store(PanwasdesRequest $request, $tahun){
+        $request['tahun'] = $tahun;
+        Panwasdes::create($request->all());
+        return redirect()->to("/panwasdes/".$tahun)->with('success', 'Data berhasil ditambahkan');
+    }
+
+    public function edit($tahun, $id){
+        $pengawas = Panwasdes::find($id);
+        return view('panwasdes.edit', compact('pengawas', 'tahun'));
+    }
+
+    public function update(PanwasdesRequest $request, $tahun, $id){
+        $request['tahun'] = $tahun;
+        Panwasdes::find($id)->update($request->all());
+        return redirect()->to('/panwasdes/'.$tahun)->with('success', 'Data berhasil diupdate');
+    }
+
+    public function delete($id){
+        Panwasdes::find($id)->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }
