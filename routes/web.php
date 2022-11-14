@@ -30,8 +30,6 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 // Route Register
-// Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/checkCode', [RegisterController::class, 'check'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'register']);
 
 // Route Dashboard

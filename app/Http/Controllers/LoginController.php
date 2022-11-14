@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -9,7 +10,12 @@ use RealRashid\SweetAlert\Facades\Alert;
 class LoginController extends Controller
 {
     public function index(){
-        return view('auth.login');
+        $checkUser = User::all()->count();
+        if($checkUser < 1){
+            return view('auth.register');
+        } else {
+            return view('auth.login');
+        }
     }
     public function authenticate(Request $request){
         // dd(bcrypt('password'));
