@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\Tahun;
 use App\Models\Panwascam;
 use App\Models\Panwasdes;
 use App\Models\Panwastps;
-use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardController extends Controller
 {
