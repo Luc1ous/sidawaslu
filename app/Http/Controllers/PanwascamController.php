@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PanwascamRequest;
+use App\Imports\AdHocPanwascamImport;
 use App\Imports\PanwascamImport;
 use App\Models\Panwascam;
 use App\Models\PengalamanKepemiluan;
@@ -39,13 +40,9 @@ class PanwascamController extends Controller
             'file' => 'required'
         ]);
 
-        $data = Excel::import(new PanwascamImport, $request->file('file'));
-        if ($data) {
-            return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
-        } else {
-            Alert::error('Gagal', 'Data gagal di Import, pastikan format sudah benar !');
-            return redirect()->back();
-        }
+        Excel::import(new PanwascamImport, $request->file('file'));
+        Excel::import(new AdHocPanwascamImport, $request->file('file'));
+        return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
     }
 
     public function search($tahun, Request $request){
@@ -57,6 +54,7 @@ class PanwascamController extends Controller
                             ->orWhere('kecamatan', 'like', "%".$query."%")
                             ->orWhere('jenis_kelamin', 'like', "%".$query."%")
                             ->orWhere('pendidikan', 'like', "%".$query."%")
+                            ->orderBy('nama', 'asc')
                             ->paginate(10);
         } else {
             $listPengawas = Panwascam::where('tahun', $tahun)->orderBy('nama', 'asc')->paginate(10);

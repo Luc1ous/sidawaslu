@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PanwasdesRequest;
+use App\Imports\AdHocPanwasdesImport;
 use App\Imports\PanwasdesImport;
 use App\Models\Panwasdes;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class PanwasdesController extends Controller
                             ->orWhere('kecamatan', 'like', "%".$query."%")
                             ->orWhere('jenis_kelamin', 'like', "%".$query."%")
                             ->orWhere('pendidikan', 'like', "%".$query."%")
+                            ->orderBy('nama', 'asc')
                             ->paginate(10);
         } else {
             $listPengawas = Panwasdes::where('tahun', $tahun)->orderBy('nama', 'asc')->paginate(10);
@@ -37,13 +39,9 @@ class PanwasdesController extends Controller
         $request->validate([
             'file' => 'required'
         ]);
-        $data = Excel::import(new PanwasdesImport, $request->file('file'));
-        if($data){
-            return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
-        } else {
-            Alert::error('Gagal', 'Data gagal di Import, pastikan format sudah benar !');
-            return redirect()->back();
-        }
+        Excel::import(new PanwasdesImport, $request->file('file'));
+        Excel::import(new AdHocPanwasdesImport, $request->file('file'));
+        return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
     }
 
     public function add($tahun){

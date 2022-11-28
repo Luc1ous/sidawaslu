@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class AdHoc extends Model
 {
     use HasFactory;
-    protected $table = 'adhoc';
+    protected $table = 'ad_hoc';
     protected $guarded = ['id'];
 }

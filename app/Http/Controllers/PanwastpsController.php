@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Imports\PanwastpsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\PanwastpsRequest;
+use App\Imports\AdHocPanwastpsImport;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PanwastpsController extends Controller
@@ -26,6 +27,7 @@ class PanwastpsController extends Controller
                             ->orWhere('kecamatan', 'like', "%".$query."%")
                             ->orWhere('jenis_kelamin', 'like', "%".$query."%")
                             ->orWhere('pendidikan', 'like', "%".$query."%")
+                            ->orderBy('nama', 'asc')
                             ->paginate(10);
         } else {
             $listPengawas = Panwastps::where('tahun', $tahun)->orderBy('nama', 'asc')->paginate(10);
@@ -38,13 +40,9 @@ class PanwastpsController extends Controller
         $request->validate([
             'file' => 'required'
         ]);
-        $data = Excel::import(new PanwastpsImport, $request->file('file'));
-        if($data){
-            return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
-        } else {
-            Alert::error('Gagal', 'Data gagal di Import, pastikan format sudah benar !');
-            return redirect()->back();
-        }
+        Excel::import(new PanwastpsImport, $request->file('file'));
+        Excel::import(new AdHocPanwastpsImport, $request->file('file'));
+        return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
     }
 
     public function add($tahun){

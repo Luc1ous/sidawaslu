@@ -96,7 +96,7 @@
             </li>
             {{-- Pengalaman Kepemiluan --}}
             <li class="menu-item {{ (request()->is('pengalaman')) ? 'active' : '' }}">
-              <a href="/pengalaman" class="menu-link menu-toggle">
+              <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-user-pin"></i>
                 <div>Data ADHOC</div>
               </a>

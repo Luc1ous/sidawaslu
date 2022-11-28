@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdHocController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PanwascamController;
@@ -48,6 +49,12 @@ Route::controller(TahunController::class)->middleware('auth')->group(function ()
     Route::get('/tahun/delete/{id}', 'delete');
     Route::post('/tahun/add', 'store');
     Route::post('/tahun/edit/{id}', 'update');
+});
+
+// Route Ad Hoc
+Route::controller(AdHocController::class)->middleware('auth')->group(function(){
+    Route::get('/adhoc/{tahun}', 'index');
+    Route::get('/adhoc/{tahun}/search', 'search');
 });
 
 // Route Pengalaman Kepemiluan
