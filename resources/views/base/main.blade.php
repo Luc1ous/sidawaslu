@@ -70,26 +70,45 @@
                 <div>Dashboard</div>
               </a>
             </li>
-            <!-- User -->
-            <li class="menu-item {{ (request()->is('user')) ? 'active' : '' }}">
-              <a href="/user" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-user"></i>
-                <div>User</div>
+            {{-- Catatan Khusus --}}
+            <li class="menu-item {{ (request()->is('/')) ? 'active' : '' }}">
+              <a href="/catatan" class="menu-link">
+                <i class='menu-icon bx bxs-notepad'></i>
+                <div>Catatan Khusus</div>
               </a>
             </li>
-            {{-- Tahun --}}
-            <li class="menu-item {{ (request()->is('tahun')) ? 'active' : '' }}">
-              <a href="/tahun" class="menu-link">
-                <i class='menu-icon bx bxs-calendar' ></i>
-                <div>Tahun</div>
+            <!-- User -->
+            <li class="menu-item">
+              <a href="javascript:void(0)" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bxs-user"></i>
+                <div data-i18n="Extended UI">Data Master</div>
               </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/user" class="menu-link">
+                    <div>User</div>
+                  </a>
+                  <a href="/tahun" class="menu-link">
+                    <div>Tahun</div>
+                  </a>
+                </li>
+              </ul>
             </li>
             {{-- Pengalaman Kepemiluan --}}
             <li class="menu-item {{ (request()->is('pengalaman')) ? 'active' : '' }}">
-              <a href="/pengalaman" class="menu-link">
+              <a href="/pengalaman" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-user-pin"></i>
-                <div>Kepemiluan</div>
+                <div>Data ADHOC</div>
               </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  @foreach ($listTahun as $tahun)
+                    <a href="/adhoc/{{ $tahun->tahun }}" class="menu-link">
+                      <div data-i18n="Perfect Scrollbar">{{ $tahun->tahun }}</div>
+                    </a>
+                  @endforeach
+                </li>
+              </ul>
             </li>
             <!-- Data Pengawas Kecamatan -->
             <li class="menu-item">
@@ -127,7 +146,7 @@
             <li class="menu-item">
               <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-user-pin"></i>
-                <div data-i18n="Extended UI">Panwas TPS</div>
+                <div data-i18n="Extended UI">Pengawas TPS</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">

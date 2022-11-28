@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('panwascam', function (Blueprint $table) {
+        Schema::create('ad_hoc', function (Blueprint $table) {
             $table->id();
             $table->string('nama')->nullable();
             $table->string('kecamatan')->nullable();
@@ -44,6 +44,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('panwascam');
+        Schema::dropIfExists('ad_hoc');
     }
 };

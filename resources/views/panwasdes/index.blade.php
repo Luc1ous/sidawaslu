@@ -65,6 +65,7 @@
               <th>No Hp</th>
               <th>Jenis Kelamin</th>
               <th>Tempat Tanggal Lahir</th>
+              <th>Tahun</th>
               <th>Keterangan</th>
               <th>Action</th>
             </tr>

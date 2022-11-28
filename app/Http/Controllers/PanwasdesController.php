@@ -24,6 +24,8 @@ class PanwasdesController extends Controller
             $listPengawas = Panwasdes::where('tahun', $tahun)
                             ->where('nama', 'like', "%".$query."%")
                             ->orWhere('kecamatan', 'like', "%".$query."%")
+                            ->orWhere('jenis_kelamin', 'like', "%".$query."%")
+                            ->orWhere('pendidikan', 'like', "%".$query."%")
                             ->paginate(10);
         } else {
             $listPengawas = Panwasdes::where('tahun', $tahun)->orderBy('nama', 'asc')->paginate(10);

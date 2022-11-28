@@ -66,6 +66,7 @@
               <th>No Hp</th>
               <th>Jenis Kelamin</th>
               <th>Pendidikan</th>
+              <th>Tahun</th>
               <th>Keterangan</th>
               <th>Action</th>
             </tr>
@@ -102,6 +103,7 @@
                 <td>{{ $pengawas->jenis_kelamin }}</td>
                 <td>{{ $pengawas->pendidikan }}</td>
                 <td>{{ $pengawas->tahun }}</td>
+                <td>{{ $pengawas->keterangan }}</td>
                 <td>
                   <a href="/panwascam/{{ $selectedYear }}/{{ $pengawas->id }}/edit" class="btn btn-sm btn-warning">
                     <i class="bi bi-pencil-square"></i>

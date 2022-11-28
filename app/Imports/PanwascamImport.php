@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+
 use App\Models\Panwascam;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -32,6 +33,7 @@ class PanwascamImport implements ToModel, WithHeadingRow
             'alamat' => $row['alamat'],
             'nomor_hp' => $row['nomor_hp'],
             'pengalaman_kepemiluan' => $row['pengalaman_kepemiluan'],
+            'keterangan' => 'Panwascam',
             'tahun' => $row['tahun'],
         ]);
     }

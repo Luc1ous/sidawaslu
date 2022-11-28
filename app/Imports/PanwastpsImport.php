@@ -25,6 +25,8 @@ class PanwastpsImport implements ToModel, WithHeadingRow
             'agama' => $row['agama'],
             'disabilitas' => $row['disabilitas'],
             'no_hp' => $row['no_hp'],
+            'pengalaman_kepemiluan' => $row['pengalaman_kepemiluan'],
+            'keterangan' => 'Pengawas TPS',
             'tahun' => $row['tahun'],
         ]);
     }

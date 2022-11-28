@@ -27,6 +27,8 @@ class PanwasdesImport implements ToModel, WithHeadingRow
             'pekerjaan' => $row['pekerjaan'],
             'alamat' => $row['alamat'],
             'no_hp' => $row['no_hp'],
+            'pengalaman_kepemiluan' => $row['pengalaman_kepemiluan'],
+            'keterangan' => 'Panwasdes',
             'tahun' => $row['tahun'],
         ]);
     }

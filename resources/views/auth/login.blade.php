@@ -128,7 +128,6 @@
                     @enderror
                   </div>
                 </div>
-                <p class="mb-3">Belum mempunyai akun ? <a href="" class="text-primary" data-bs-toggle="modal" data-bs-target="#basicModal" >Register</a></p>
                 <div class="mb-3">
                   <button class="btn btn-success d-grid w-100" type="submit">Sign in</button>
                 </div>

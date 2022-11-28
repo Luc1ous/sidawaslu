@@ -129,7 +129,6 @@
                     @enderror
                   </div>
                 </div>
-                <p class="mb-3">Sudah mempunyai akun ? <a href="/login" class="text-primary">Login</a></p>
                 <div class="mb-3">
                   <button class="btn btn-success d-grid w-100" type="submit">Sign in</button>
                 </div>

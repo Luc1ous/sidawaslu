@@ -51,14 +51,14 @@ Route::controller(TahunController::class)->middleware('auth')->group(function ()
 });
 
 // Route Pengalaman Kepemiluan
-Route::controller(PengalamanKepemiluanController::class)->middleware('auth')->group(function (){
-    Route::get('/pengalaman', 'index');
-    Route::get('/pengalaman/add', 'add');
-    Route::get('/pengalaman/{id}', 'view');
-    Route::get('/pengalaman/delete/{id}', 'delete');
-    Route::post('/pengalaman/add', 'store');
-    Route::post('/pengalaman/edit/{id}', 'update');
-});
+// Route::controller(PengalamanKepemiluanController::class)->middleware('auth')->group(function (){
+//     Route::get('/pengalaman', 'index');
+//     Route::get('/pengalaman/add', 'add');
+//     Route::get('/pengalaman/{id}', 'view');
+//     Route::get('/pengalaman/delete/{id}', 'delete');
+//     Route::post('/pengalaman/add', 'store');
+//     Route::post('/pengalaman/edit/{id}', 'update');
+// });
 
 // Route Panwascam
 Route::controller(PanwascamController::class)->middleware('auth')->group(function(){

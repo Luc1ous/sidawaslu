@@ -10,7 +10,7 @@ use App\Models\Panwastps;
 class DashboardController extends Controller
 {
     public function index(){
-        $panwascam = Panwascam::distinct('nik')->count();
+        $panwascam = Panwascam::all()->count();
         $panwasdes = Panwasdes::all()->count();
         $panwastps = Panwastps::all()->count();
 

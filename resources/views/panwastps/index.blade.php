@@ -8,7 +8,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       @endif
-      <h3>Data Panwas TPS Tahun
+      <h3>Data Pengawas TPS Tahun
         {{ $selectedYear }}
       </h3>
       <div class="d-flex justify-content-between">
@@ -65,6 +65,7 @@
               <th>No Hp</th>
               <th>Jenis Kelamin</th>
               <th>Tempat Tanggal Lahir</th>
+              <th>Tahun</th>
               <th>Keterangan</th>
               <th>Action</th>
             </tr>

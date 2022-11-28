@@ -1,0 +1,48 @@
+[33mcommit 555e018313ec68afa7d297e8f1207008bfda9eff[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Luc1ous <ardianilyas@gmail.com>
+Date:   Tue Nov 22 10:41:58 2022 +0700
+
+    fix dashboard
+
+[33mcommit 2a0cc4d378817210d3a4aedef17668a29e609d1a[m
+Author: Luc1ous <ardianilyas@gmail.com>
+Date:   Mon Nov 14 13:36:00 2022 +0700
+
+    update register
+
+[33mcommit a12df72ceb49b5c8a37024487eaeb7c61c9e07b8[m
+Author: Luc1ous <ardianilyas@gmail.com>
+Date:   Sun Nov 13 21:00:18 2022 +0700
+
+    adding crud and alert
+
+[33mcommit 7e4e034c25480dc5863536ff49c63c490cc0af44[m
+Merge: 494e1a3 add52d5
+Author: Luc1ous <ardianilyas@gmail.com>
+Date:   Fri Nov 11 22:16:34 2022 +0700
+
+    Merge branch 'main' of https://github.com/Luc1ous/sidawaslu
+
+[33mcommit 494e1a3e6d5a330db5f79f530f6d48002d579ede[m
+Author: Luc1ous <ardianilyas@gmail.com>
+Date:   Fri Nov 11 22:12:12 2022 +0700
+
+    second commit
+
+[33mcommit add52d5beb38261843b63dade6f58d0279d807ea[m
+Author: ardianilyas <76027798+Luc1ous@users.noreply.github.com>
+Date:   Tue Nov 8 17:27:08 2022 +0700
+
+    Update README.md
+
+[33mcommit 2faa0559bd1359f96558e178046c41ad78a2a955[m
+Author: Luc1ous <ardianilyas@gmail.com>
+Date:   Tue Nov 8 17:23:59 2022 +0700
+
+    commit
+
+[33mcommit dcd3805bff684f4fafbfc168ed221e31b5ed56d1[m
+Author: Luc1ous <ardianilyas@gmail.com>
+Date:   Tue Nov 8 17:21:44 2022 +0700
+
+    commit

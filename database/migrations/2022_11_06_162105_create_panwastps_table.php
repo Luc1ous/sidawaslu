@@ -24,7 +24,10 @@ return new class extends Migration
             $table->string('agama')->nullable();
             $table->string('disabilitas')->nullable();
             $table->string('no_hp')->nullable();
+            $table->string('pengalaman_kepemiluan')->nullable();
             $table->string('tahun');
+            $table->string('keterangan')->nullable();
+            $table->foreign('tahun')->references('tahun')->on('tahun')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
