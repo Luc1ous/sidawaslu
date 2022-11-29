@@ -59,7 +59,7 @@ class PanwascamController extends Controller
         } else {
             $listPengawas = Panwascam::where('tahun', $tahun)->orderBy('nama', 'asc')->paginate(10);
         }
-        return view('panwascam.index', compact('selectedYear', 'listPengawas'));
+        return view('panwascam.index', compact('selectedYear', 'listPengawas', 'query'));
     }
 
     public function edit($tahun, $id){

@@ -56,6 +56,9 @@
           Upload
         </button>
       </form>
+      @if (isset($query))
+          <p>Menampilkan hasil dari pencarian : <b>{{ $query }}</b></p>
+      @endif
       <div class="table-responsive text-nowrap mb-3">
         <table class="table table-hover">
           <thead class="table-light">
@@ -123,7 +126,7 @@
           </tbody>
         </table>
       </div>
-      {{ $listPengawas->links() }}
+      {{ $listPengawas->appends(Request::except('page'))->links() }}
     </div>
   </div>
     

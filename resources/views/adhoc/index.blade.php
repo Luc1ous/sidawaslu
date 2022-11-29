@@ -1,4 +1,4 @@
-@extends('base.main', ['title' => 'Data Panwascam'])
+@extends('base.main', ['title' => 'Data Ad Hoc'])
 @section('content')
 
 <div class="card">

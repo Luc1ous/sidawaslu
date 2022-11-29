@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdHocController;
+use App\Http\Controllers\CatatanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PanwascamController;
@@ -35,6 +36,16 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 // Route Dashboard
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
+
+// Route Catatan
+Route::controller(CatatanController::class)->middleware('auth')->group(function (){
+    Route::get('/catatan', 'index');
+    Route::get('/catatan/add', 'add');
+    Route::get('/catatan/edit/{id}', 'edit');
+    Route::post('/catatan/store', 'store');
+    Route::post('/catatan/update/{id}', 'update');
+    Route::post('/catatan/delete/{id}', 'delete');
+});
 
 // Route User
 Route::controller(UserController::class)->middleware('auth')->group(function (){

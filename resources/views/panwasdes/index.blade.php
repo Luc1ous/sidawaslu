@@ -55,6 +55,9 @@
           Upload
         </button>
       </form>
+      @if (isset($query))
+        <p>Menampilkan hasil dari pencarian : <b>{{ $query }}</b></p>
+      @endif
       <div class="table-responsive text-nowrap mb-3">
         <table class="table table-hover">
           <thead class="table-light">
@@ -102,6 +105,7 @@
                 <td>{{ $pengawas->jenis_kelamin }}</td>
                 <td>{{ $pengawas->ttl }}</td>
                 <td>{{ $pengawas->tahun }}</td>
+                <td>{{ $pengawas->keterangan }}</td>
                 <td>
                   <a href="/panwasdes/{{ $selectedYear }}/{{ $pengawas->id }}/edit" class="btn btn-sm btn-warning">
                     <i class="bi bi-pencil-square"></i>
@@ -121,7 +125,7 @@
           </tbody>
         </table>
       </div>
-      {{ $listPengawas->links() }}
+      {{ $listPengawas->appends(Request::except('page'))->links() }}
     </div>
   </div>
     

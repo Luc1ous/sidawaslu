@@ -26,13 +26,12 @@ class PanwasdesController extends Controller
                             ->where('nama', 'like', "%".$query."%")
                             ->orWhere('kecamatan', 'like', "%".$query."%")
                             ->orWhere('jenis_kelamin', 'like', "%".$query."%")
-                            ->orWhere('pendidikan', 'like', "%".$query."%")
                             ->orderBy('nama', 'asc')
                             ->paginate(10);
         } else {
             $listPengawas = Panwasdes::where('tahun', $tahun)->orderBy('nama', 'asc')->paginate(10);
         }
-        return view('panwasdes.index', compact('selectedYear', 'listPengawas'));
+        return view('panwasdes.index', compact('selectedYear', 'listPengawas', 'query'));
     }
 
     public function import(Request $request){
