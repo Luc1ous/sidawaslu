@@ -80,7 +80,7 @@
             <!-- User -->
             <li class="menu-item">
               <a href="javascript:void(0)" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bxs-user"></i>
+                <i class='menu-icon bx bxs-archive'></i>
                 <div data-i18n="Extended UI">Data Master</div>
               </a>
               <ul class="menu-sub">
@@ -98,7 +98,7 @@
             <li class="menu-item {{ (request()->is('pengalaman')) ? 'active' : '' }}">
               <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-user-pin"></i>
-                <div>Data ADHOC</div>
+                <div>Data AD HOC</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">

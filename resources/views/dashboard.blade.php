@@ -17,7 +17,7 @@
       <div class="card">
         <div class="card-body">
           <div class="d-flex align-items-center">
-            <img src="../template/assets/img/team.png" width="40" alt="">
+            <img src="../template/assets/img/man.png" width="40" alt="">
             <span class="text-dark ms-3">
               <h4>{{ $panwascam }} orang</h4>
               Total Panwas Kecamatan
@@ -30,7 +30,7 @@
       <div class="card">
         <div class="card-body">
           <div class="d-flex align-items-center">
-            <img src="../template/assets/img/team.png" width="40" alt="">
+            <img src="../template/assets/img/man.png" width="40" alt="">
             <span class="text-dark ms-3">
               <h4>{{ $panwasdes }} orang</h4>
               Total Panwas Desa
@@ -43,10 +43,10 @@
       <div class="card">
         <div class="card-body">
           <div class="d-flex align-items-center">
-            <img src="../template/assets/img/team.png" width="40" alt="">
+            <img src="../template/assets/img/man.png" width="40" alt="">
             <span class="text-dark ms-3">
               <h4>{{ $panwastps }} orang</h4>
-              Total Panwas TPS
+              Total Pengawas TPS
             </span>
           </div>
         </div>
