@@ -101,9 +101,9 @@
                 <td>{{ $listPengawas->firstItem() + $index }}</td>
                 <td>{{ $pengawas->nama }}</td>
                 <td>{{ $pengawas->kecamatan }}</td>
-                <td>{{ $pengawas->no_hp }}</td>
+                <td>{{ $pengawas->nomor_hp }}</td>
                 <td>{{ $pengawas->jenis_kelamin }}</td>
-                <td>{{ $pengawas->tanggal_lahir }}</td>
+                <td>{{ $pengawas->ttl }}</td>
                 <td>{{ $pengawas->tahun }}</td>
                 <td>{{ $pengawas->keterangan }}</td>
                 <td>

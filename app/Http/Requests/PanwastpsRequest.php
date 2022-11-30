@@ -28,9 +28,10 @@ class PanwastpsRequest extends FormRequest
             'kecamatan' => 'required',
             'kelurahan' => 'required',
             'tps' => 'required',
-            'tanggal_lahir' => 'required',
+            'ttl' => 'required',
             'agama' => 'required',
-            'no_hp' => 'required',
+            'nomor_hp' => 'required',
+            'pengalaman_kepemiluan' => 'required',
         ];
     }
 }

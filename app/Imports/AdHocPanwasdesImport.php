@@ -26,7 +26,7 @@ class AdHocPanwasdesImport implements ToModel, WithHeadingRow
             'disabilitas' => $row['disabilitas'],
             'pekerjaan' => $row['pekerjaan'],
             'alamat' => $row['alamat'],
-            'no_hp' => $row['no_hp'],
+            'nomor_hp' => $row['nomor_hp'],
             'pengalaman_kepemiluan' => $row['pengalaman_kepemiluan'],
             'keterangan' => 'Panwasdes',
             'tahun' => $row['tahun'],

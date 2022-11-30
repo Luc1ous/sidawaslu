@@ -171,14 +171,9 @@
               @enderror
             </div>
           </div>
-          {{-- Checkbox Pengalaman Kepemiluan --}}
+          {{-- Pengalaman Kepemiluan --}}
           <label for="defaultFormControlInput" class="form-label">Pengalaman Kepemiluan</label>
-          @foreach ($listPengalaman as $pengalaman)
-            <div class="form-check mt-3">
-                <input class="form-check-input" type="checkbox" value="{{ $pengalaman->pengalaman }}" name="pengalaman_kepemiluan[]" id="{{ $pengalaman->id }}" />
-                <label class="form-check-label" for="{{ $pengalaman->id }}">{{ $pengalaman->pengalaman }}</label>
-            </div>
-          @endforeach
+          <textarea type="text" name="pengalaman_kepemiluan" class="form-control" placeholder="Pengalaman Kepemiluan" value="{{ old('pengalaman_kepemiluan') }}"></textarea>
           <div class="mt-3">
             <button type="submit" class="btn btn-sm btn-success">Simpan</button>
             <a href="/panwascam/{{ $tahun }}" class="btn btn-sm btn-secondary">Kembali</a>

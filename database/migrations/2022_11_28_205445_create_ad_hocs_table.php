@@ -17,8 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('nama')->nullable();
             $table->string('kecamatan')->nullable();
+            $table->string('kelurahan')->nullable();
+            $table->string('no_tps')->nullable();
             $table->string('jabatan')->nullable();
             $table->string('nik')->nullable();
+            $table->string('ttl')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->string('tanggal_lahir')->nullable();
             $table->string('nomor_sk')->nullable();

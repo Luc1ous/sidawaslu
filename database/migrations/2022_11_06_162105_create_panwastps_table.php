@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('kecamatan')->nullable();
             $table->string('kelurahan')->nullable();
             $table->string('tps')->nullable();
-            $table->string('tanggal_lahir')->nullable();
+            $table->string('ttl')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('agama')->nullable();
             $table->string('disabilitas')->nullable();
-            $table->string('no_hp')->nullable();
+            $table->string('nomor_hp')->nullable();
             $table->string('pengalaman_kepemiluan')->nullable();
             $table->string('tahun');
             $table->string('keterangan')->nullable();

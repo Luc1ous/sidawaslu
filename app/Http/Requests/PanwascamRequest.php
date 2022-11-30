@@ -35,7 +35,8 @@ class PanwascamRequest extends FormRequest
             'pendidikan' => 'required',
             'pekerjaan' => 'required',
             'alamat' => 'required',
-            'nomor_hp' => 'required'
+            'nomor_hp' => 'required',
+            'pengalaman_kepemiluan' => 'required',
         ];
     }
 }

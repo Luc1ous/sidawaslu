@@ -15,8 +15,8 @@
               {{ $message }}
             </div>
           @enderror
-          <button class="btn btn-success my-4" type="submit">Simpan</button>
-          <a href="/tahun/delete/{{ $tahun->id }}" class="btn btn-danger">Hapus</a>
+          <button class="btn btn-sm btn-success my-4" type="submit">Simpan</button>
+          <a href="/tahun/delete/{{ $tahun->id }}" class="btn btn-sm btn-danger">Hapus</a>
         </form>
       </div>
     </div>

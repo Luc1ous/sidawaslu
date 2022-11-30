@@ -126,15 +126,19 @@
           <div class="row g-2 mb-3">  
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">No HP</label>
-              <input type="text" name="no_hp" class="form-control @error('no_hp') is-invalid
-              @enderror" id="defaultFormControlInput" value="{{ $pengawas->no_hp }}" aria-describedby="defaultFormControlHelp"
-              value="{{ old('no_hp') }}"/>
-              @error('no_hp')
+              <input type="text" name="nomor_hp" class="form-control @error('nomor_hp') is-invalid
+              @enderror" id="defaultFormControlInput" value="{{ $pengawas->nomor_hp }}" aria-describedby="defaultFormControlHelp"
+              value="{{ old('nomor_hp') }}"/>
+              @error('nomor_hp')
                   <div class="invalid-feedback">
                     {{ $message }}
                   </div>
               @enderror
             </div>
+          </div>
+          <div class="col">
+            <label for="defaultFormControlInput" class="form-label">Pengalaman Kepemiluan</label>
+            <textarea id="basic-default-message" name="pengalaman_kepemiluan" class="form-control" style="height: 100px">{{ $pengawas->pengalaman_kepemiluan }}</textarea>
           </div>
 
           <div class="mt-3">

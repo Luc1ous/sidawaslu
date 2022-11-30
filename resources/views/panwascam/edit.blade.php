@@ -107,7 +107,7 @@
           
           <div class="mt-3">
             <button type="submit" class="btn btn-sm btn-success">Simpan</button>
-            <a href="/panwascam/{{ $tahun }}" class="btn btn-secondary">Kembali</a>
+            <a href="/panwascam/{{ $tahun }}" class="btn btn-sm btn-secondary">Kembali</a>
           </div>
         </form>
       </div>

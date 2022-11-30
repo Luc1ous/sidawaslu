@@ -11,7 +11,7 @@
         <h3>Catatan Khusus</h3>
         <div class="d-flex justify-content-between">
           <div class="col-6">
-            <form action="/catatan/search" method="GET">
+            <form action="/catatan" method="GET">
               <div class="input-group">
                 <input
                   type="text"
@@ -29,6 +29,9 @@
             Add Catatan
           </a>
         </div>
+        @if ($query)
+            <p>Menampilkan hasil dari pencarian : <b>{{ $query }}</b></p>
+        @endif
       </div>
       <div class="card-body">
         <div class="table-responsive text-nowrap mb-3">

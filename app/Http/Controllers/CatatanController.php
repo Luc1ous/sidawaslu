@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class CatatanController extends Controller
 {
-    public function index(){
-        $listCatatan = Catatan::latest()->paginate(5);
-        return view('catatan.index', compact('listCatatan'));
+    public function index(Request $request){
+        $query = $request->search;
+        if ($request->search) {
+            $listCatatan = Catatan::where('judul', 'like', '%'.$query.'%')->paginate(5);
+        } else {
+            $listCatatan = Catatan::latest()->paginate(5);
+        }
+        return view('catatan.index', compact('listCatatan', 'query'));
     }
 
     public function add(){

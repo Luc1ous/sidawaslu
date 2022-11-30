@@ -10,7 +10,7 @@
         </div>
       @endif
       <h3>Data Tahun</h3>
-      <a href="/tahun/add" class="btn btn-primary">Tambah</a>
+      <a href="/tahun/add" class="btn btn-sm btn-primary">Tambah</a>
     </div>
     <div class="card-body">
       <div class="table text-nowrap">
@@ -23,15 +23,26 @@
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
-            @foreach ($listTahun as $tahun)
+            @forelse ($listTahun as $tahun)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $tahun->tahun }}</td>
                   <td>
-                    <a href="/tahun/{{ $tahun->id }}" class="btn btn-sm btn-secondary">View</a>
+                    <a href="/tahun/edit/{{ $tahun->id }}" class="btn btn-sm btn-warning">
+                      <i class="bi bi-pencil-square"></i>
+                      Edit
+                    </a>
+                    <a href="/tahun/delete/{{ $tahun->id }}" class="btn btn-sm btn-danger">
+                      <i class="bi bi-trash"></i>
+                      Delete
+                    </a>
                   </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                  <td colspan="3" class="fw-bold text-center">Data kosong / tidak ditemukan</td>
+                </tr>
+            @endforelse
           </tbody>
         </table>
       </div>

@@ -45,7 +45,6 @@
               <th>Pendidikan</th>
               <th>Tahun</th>
               <th>Keterangan</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -56,7 +55,11 @@
                 <td>{{ $pengawas->kecamatan }}</td>
                 <td>{{ $pengawas->nomor_hp }}</td>
                 <td>{{ $pengawas->jenis_kelamin }}</td>
-                <td>{{ $pengawas->pendidikan }}</td>
+                @if ($pengawas->pendidikan)
+                  <td>{{ $pengawas->pendidikan }}</td>
+                @else
+                  <td>-</td>
+                @endif
                 <td>{{ $pengawas->tahun }}</td>
                 <td>{{ $pengawas->keterangan }}</td>
               </tr>

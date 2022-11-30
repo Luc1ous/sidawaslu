@@ -59,10 +59,10 @@
           <div class="row g-2 mb-3">
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Tempat Tanggal Lahir</label>
-              <input type="text" name="tanggal_lahir" class="form-control @error('tanggal_lahir') is-invalid
+              <input type="text" name="ttl" class="form-control @error('ttl') is-invalid
               @enderror" id="defaultFormControlInput" placeholder="Tempat Tanggal Lahir" aria-describedby="defaultFormControlHelp"
-              value="{{ old('tanggal_lahir') }}"/>
-              @error('tanggal_lahir')
+              value="{{ old('ttl') }}"/>
+              @error('ttl')
                   <div class="invalid-feedback">
                     {{ $message }}
                   </div>
@@ -101,16 +101,19 @@
           <div class="row g-2 mb-3">  
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">No HP</label>
-              <input type="text" name="no_hp" class="form-control @error('no_hp') is-invalid
+              <input type="text" name="nomor_hp" class="form-control @error('nomor_hp') is-invalid
               @enderror" id="defaultFormControlInput" placeholder="No HP" aria-describedby="defaultFormControlHelp"
-              value="{{ old('no_hp') }}"/>
-              @error('no_hp')
+              value="{{ old('nomor_hp') }}"/>
+              @error('nomor_hp')
                   <div class="invalid-feedback">
                     {{ $message }}
                   </div>
               @enderror
             </div>
           </div>
+
+          <label for="defaultFormControlInput" class="form-label">Pengalaman Kepemiluan</label>
+          <textarea type="text" name="pengalaman_kepemiluan" class="form-control" placeholder="Pengalaman Kepemiluan" value="{{ old('pengalaman_kepemiluan') }}"></textarea>
 
           <div class="mt-3">
             <button type="submit" class="btn btn-sm btn-success">Simpan</button>

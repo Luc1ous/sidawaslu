@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdHoc;
 use App\Models\Panwastps;
 use Illuminate\Http\Request;
 use App\Imports\PanwastpsImport;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Http\Requests\PanwastpsRequest;
 use App\Imports\AdHocPanwastpsImport;
+use App\Http\Requests\PanwastpsRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PanwastpsController extends Controller
 {
     public function index($tahun){
         $selectedYear = $tahun;
-        $listPengawas = Panwastps::where('tahun', $tahun)->orderBy('nama', 'asc')->paginate(10);
+        $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Pengawas TPS')->orderBy('nama', 'asc')->paginate(10);
         return view('panwastps.index', compact('selectedYear', 'listPengawas'));
     }
 
@@ -22,14 +23,15 @@ class PanwastpsController extends Controller
         $selectedYear = $tahun;
         $query = $request->search;
         if(!is_null($request->search)){
-            $listPengawas = Panwastps::where('tahun', $tahun)
+            $listPengawas = AdHoc::where('tahun', $tahun)
+                            ->where('keterangan', 'Pengawas TPS')
                             ->where('nama', 'like', "%".$query."%")
                             ->orWhere('kecamatan', 'like', "%".$query."%")
                             ->orWhere('jenis_kelamin', 'like', "%".$query."%")
                             ->orderBy('nama', 'asc')
                             ->paginate(10);
         } else {
-            $listPengawas = Panwastps::where('tahun', $tahun)->orderBy('nama', 'asc')->paginate(10);
+            $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Pengawas TPS')->orderBy('nama', 'asc')->paginate(10);
         }
 
         return view('panwastps.index', compact('selectedYear', 'listPengawas', 'query'));
@@ -39,7 +41,7 @@ class PanwastpsController extends Controller
         $request->validate([
             'file' => 'required'
         ]);
-        Excel::import(new PanwastpsImport, $request->file('file'));
+        // Excel::import(new PanwastpsImport, $request->file('file'));
         Excel::import(new AdHocPanwastpsImport, $request->file('file'));
         return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
     }
@@ -49,24 +51,25 @@ class PanwastpsController extends Controller
     }
 
     public function store(PanwastpsRequest $request, $tahun){
+        $request['keterangan'] = 'Pengawas TPS';
         $request['tahun'] = $tahun;
-        Panwastps::create($request->all());
+        AdHoc::create($request->all());
         return redirect()->to('/panwastps/'.$tahun)->with('success', 'Data berhasil ditambahkan');
     }
 
     public function edit($tahun, $id){
-        $pengawas = Panwastps::find($id);
+        $pengawas = AdHoc::find($id);
         return view('panwastps.edit', compact('pengawas', 'tahun'));
     }
 
     public function update(PanwastpsRequest $request, $tahun, $id){
         $request['tahun'] = $tahun;
-        Panwastps::find($id)->update($request->all());
+        AdHoc::find($id)->update($request->all());
         return redirect()->to('/panwastps/'.$tahun)->with('success', 'Data berhasil diupdate');
     }
 
     public function delete($id){
-        Panwastps::find($id)->delete();
+        AdHoc::find($id)->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 

@@ -56,7 +56,7 @@ Route::controller(UserController::class)->middleware('auth')->group(function (){
 Route::controller(TahunController::class)->middleware('auth')->group(function (){
     Route::get('/tahun', 'index');
     Route::get('/tahun/add', 'add');
-    Route::get('/tahun/{id}', 'view');
+    Route::get('/tahun/edit/{id}', 'view');
     Route::get('/tahun/delete/{id}', 'delete');
     Route::post('/tahun/add', 'store');
     Route::post('/tahun/edit/{id}', 'update');
