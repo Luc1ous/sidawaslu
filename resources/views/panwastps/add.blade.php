@@ -46,10 +46,10 @@
             </div>
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">No TPS</label>
-              <input type="text" name="tps" class="form-control @error('tps') is-invalid
+              <input type="text" name="no_tps" class="form-control @error('no_tps') is-invalid
               @enderror" id="defaultFormControlInput" placeholder="No TPS" aria-describedby="defaultFormControlHelp"
-              value="{{ old('tps') }}"/>
-              @error('tps')
+              value="{{ old('no_tps') }}"/>
+              @error('no_tps')
                   <div class="invalid-feedback">
                     {{ $message }}
                   </div>
@@ -71,8 +71,8 @@
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Jenis Kelamin</label>
               <select class="form-select" name="jenis_kelamin">
-                <option value="L">Laki - Laki</option>
-                <option value="P">Perempuan</option>
+                <option value="Laki - Laki">Laki - Laki</option>
+                <option value="Perempuan">Perempuan</option>
               </select>
             </div>
           </div>
@@ -114,6 +114,9 @@
 
           <label for="defaultFormControlInput" class="form-label">Pengalaman Kepemiluan</label>
           <textarea type="text" name="pengalaman_kepemiluan" class="form-control" placeholder="Pengalaman Kepemiluan" value="{{ old('pengalaman_kepemiluan') }}"></textarea>
+
+          <label for="defaultFormControlInput" class="form-label">Catatan Khusus</label>
+          <textarea type="text" name="catatan" class="form-control" placeholder="Catatan Khusus" value="{{ old('catatan') }}"></textarea>
 
           <div class="mt-3">
             <button type="submit" class="btn btn-sm btn-success">Simpan</button>

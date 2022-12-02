@@ -8,12 +8,24 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       @endif
-      <h3>Data Pengawas TPS Tahun
-        {{ $selectedYear }}
-      </h3>
       <div class="d-flex justify-content-between">
-        <div class="col-6">
-          <form action="/panwastps/{{ $selectedYear }}/search" method="GET">
+        <h3>Data Pengawas TPS Tahun
+          {{ $tahun }}
+        </h3>
+        <div class="dropdown">
+          <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class='bx bx-filter'></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId" style="">
+            <a class="dropdown-item" href="/panwastps/{{ $tahun }}/filter/nama">Nama</a>
+            <a class="dropdown-item" href="/panwastps/{{ $tahun }}/filter/kecamatan">Kecamatan</a>
+            <a class="dropdown-item" href="/panwastps/{{ $tahun }}/filter/jenis_kelamin">Jenis Kelamin</a>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="col-6 p-0">
+          <form action="/panwastps/{{ $tahun }}/search" method="GET">
             <div class="input-group">
               <input
                 type="text"
@@ -26,7 +38,7 @@
             </div>
           </form>
         </div>
-        <a href="/panwastps/{{ $selectedYear }}/add" class="btn btn-primary">
+        <a href="/panwastps/{{ $tahun }}/add" class="btn btn-primary">
           <i class='bx bx-plus'></i>
           Add Data
         </a>
@@ -35,7 +47,7 @@
     <div class="card-body">
       <form action="/panwastps/import" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="input-group">
+        <div class="input-group col-8 mb-3 p-0">
           <input
             type="file"
             name="file"
@@ -44,21 +56,22 @@
             aria-describedby="inputGroupFileAddon04"
             aria-label="Upload"
           />
+          <button class="btn btn-success" type="submit">
+            <i class='bx bxs-cloud-upload'></i>
+            Upload
+          </button>
           @error('file')
             <div class="invalid-feedback">
               {{ $message }}
             </div>
           @enderror
         </div>
-        <button class="btn btn-success my-3" type="submit">
-          <i class='bx bxs-cloud-upload'></i>
-          Upload
-        </button>
       </form>
-      @if (isset($query))
-        <p>Menampilkan hasil dari pencarian : <b>{{ $query }}</b></p>
+      <span class="bg-dark p-2 text-white rounded">Total data : {{ $listPengawas->total() }}</span>
+      @if (isset($search))
+        <p class="mt-2">Menampilkan hasil dari pencarian : <b>{{ $search }}</b></p>
       @endif
-      <div class="table-responsive text-nowrap mb-3">
+      <div class="table-responsive text-nowrap my-3">
         <table class="table table-hover">
           <thead class="table-light">
             <tr class="text-nowrap">
@@ -67,7 +80,6 @@
               <th>Kecamatan</th>
               <th>No Hp</th>
               <th>Jenis Kelamin</th>
-              <th>Tempat Tanggal Lahir</th>
               <th>Tahun</th>
               <th>Keterangan</th>
               <th>Action</th>
@@ -103,11 +115,10 @@
                 <td>{{ $pengawas->kecamatan }}</td>
                 <td>{{ $pengawas->nomor_hp }}</td>
                 <td>{{ $pengawas->jenis_kelamin }}</td>
-                <td>{{ $pengawas->ttl }}</td>
                 <td>{{ $pengawas->tahun }}</td>
                 <td>{{ $pengawas->keterangan }}</td>
                 <td>
-                  <a href="/panwastps/{{ $selectedYear }}/{{ $pengawas->id }}/edit" class="btn btn-sm btn-warning">
+                  <a href="/panwastps/{{ $tahun }}/{{ $pengawas->id }}/edit" class="btn btn-sm btn-warning">
                     <i class="bi bi-pencil-square"></i>
                     Edit
                   </a>

@@ -15,20 +15,18 @@ use RealRashid\SweetAlert\Facades\Alert;
 class PanwascamController extends Controller
 {
     public function index($tahun){
-        $selectedYear = $tahun;
-        $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Panwascam')->orderBy('nama', 'asc')->paginate(10);
-        return view('panwascam.index', compact('selectedYear', 'listPengawas'));
+        $tahun = $tahun;
+        $listPengawas = AdHoc::tahun($tahun)->ket('Panwascam')->paginate(10);
+        return view('panwascam.index', compact('tahun', 'listPengawas'));
     }
 
     public function add($tahun){
-        // $listPengalaman = PengalamanKepemiluan::all();
         return view('panwascam.add', compact('tahun'));
     }
 
     public function store(PanwascamRequest $request, $tahun){
         $request['keterangan'] = 'Panwascam';
         $request["tahun"] = $tahun;
-        // Panwascam::create($request->all());
         AdHoc::create($request->all());
         return redirect()->to("/panwascam/".$tahun)->with('success', 'Data berhasil ditambahkan');
     }
@@ -44,21 +42,26 @@ class PanwascamController extends Controller
     }
 
     public function search($tahun, Request $request){
-        $selectedYear = $tahun;
-        $query = $request->search;
+        $tahun = $tahun;
+        $search = $request->search;
         if(!is_null($request->search)){
-            $listPengawas = AdHoc::where('tahun', $tahun)
-                            ->where('keterangan', 'Panwascam')
-                            ->where('nama', 'like', "%".$query."%")
-                            ->orWhere('kecamatan', 'like', "%".$query."%")
-                            ->orWhere('jenis_kelamin', 'like', "%".$query."%")
-                            ->orWhere('pendidikan', 'like', "%".$query."%")
-                            ->orderBy('nama', 'asc')
-                            ->paginate(10);
+            $listPengawas = AdHoc::tahun($tahun)->ket('panwascam')
+                            ->where(function ($query) use ($search){
+                                $query->where('nama', 'like', '%'.$search.'%')
+                                ->orWhere('kecamatan', 'like', '%'.$search.'%')
+                                ->orWhere('jenis_kelamin', 'like', '%'.$search.'%')
+                                ->orWhere('pendidikan', 'like', '%'.$search.'%');
+                            })->orderBy('nama', 'asc')->paginate(10);
         } else {
-            $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Panwascam')->orderBy('nama', 'asc')->paginate(10);
+            $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Panwascam')->paginate(10);
         }
-        return view('panwascam.index', compact('selectedYear', 'listPengawas', 'query'));
+        return view('panwascam.index', compact('tahun', 'listPengawas', 'search'));
+    }
+
+    public function filter($tahun, $filter){
+        $tahun = $tahun;
+        $listPengawas = AdHoc::tahun($tahun)->ket('panwascam')->orderBy($filter, 'asc')->paginate(10); 
+        return view('panwascam.index', compact('listPengawas', 'tahun'));
     }
 
     public function edit($tahun, $id){

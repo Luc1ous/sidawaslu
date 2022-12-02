@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('pengalaman_kepemiluan')->nullable();
             $table->string('tahun')->nullable();
             $table->string('keterangan')->nullable();
+            $table->text('catatan')->nullable();
             $table->timestamps();
             $table->foreign('tahun')->references('tahun')->on('tahun')->onUpdate('cascade')->onDelete('cascade');
         });

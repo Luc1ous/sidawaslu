@@ -14,33 +14,37 @@ use RealRashid\SweetAlert\Facades\Alert;
 class PanwasdesController extends Controller
 {
     public function index($tahun){
-        $selectedYear = $tahun;
-        $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Panwasdes')->orderBy('nama', 'asc')->paginate(10);
-        return view('panwasdes.index', compact('selectedYear', 'listPengawas'));
+        $tahun = $tahun;
+        $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Panwasdes')->paginate(10);
+        return view('panwasdes.index', compact('tahun', 'listPengawas'));
     }
 
     public function search($tahun, Request $request){
-        $selectedYear = $tahun;
-        $query = $request->search;
+        $tahun = $tahun;
+        $search = $request->search;
         if(!is_null($request->search)){
-            $listPengawas = AdHoc::where('tahun', $tahun)
-                            ->where('keterangan', 'Panwasdes')
-                            ->where('nama', 'like', "%".$query."%")
-                            ->orWhere('kecamatan', 'like', "%".$query."%")
-                            ->orWhere('jenis_kelamin', 'like', "%".$query."%")
-                            ->orderBy('nama', 'asc')
-                            ->paginate(10);
+            $listPengawas = AdHoc::tahun($tahun)->ket('panwasdes')
+                            ->where(function ($query) use ($search){
+                                $query->where('nama', 'like', '%'.$search.'%')
+                                ->orWhere('kecamatan', 'like', '%'.$search.'%')
+                                ->orWhere('jenis_kelamin', 'like', '%'.$search.'%');
+                            })->orderBy('nama', 'asc')->paginate(10);
         } else {
-            $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Panwasdes')->orderBy('nama', 'asc')->paginate(10);
+            $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Panwasdes')->paginate(10);
         }
-        return view('panwasdes.index', compact('selectedYear', 'listPengawas', 'query'));
+        return view('panwasdes.index', compact('tahun', 'listPengawas', 'search'));
+    }
+
+    public function filter($tahun, $filter){
+        $tahun = $tahun;
+        $listPengawas = AdHoc::tahun($tahun)->ket('panwasdes')->orderBy($filter, 'asc')->paginate(10);
+        return view('panwasdes.index', compact('listPengawas', 'tahun'));
     }
 
     public function import(Request $request){
         $request->validate([
             'file' => 'required'
         ]);
-        // Excel::import(new PanwasdesImport, $request->file('file'));
         Excel::import(new AdHocPanwasdesImport, $request->file('file'));
         return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
     }

@@ -38,14 +38,14 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
 // Route Catatan
-Route::controller(CatatanController::class)->middleware('auth')->group(function (){
-    Route::get('/catatan', 'index');
-    Route::get('/catatan/add', 'add');
-    Route::get('/catatan/edit/{id}', 'edit');
-    Route::post('/catatan/store', 'store');
-    Route::post('/catatan/update/{id}', 'update');
-    Route::post('/catatan/delete/{id}', 'delete');
-});
+// Route::controller(CatatanController::class)->middleware('auth')->group(function (){
+//     Route::get('/catatan', 'index');
+//     Route::get('/catatan/add', 'add');
+//     Route::get('/catatan/edit/{id}', 'edit');
+//     Route::post('/catatan/store', 'store');
+//     Route::post('/catatan/update/{id}', 'update');
+//     Route::post('/catatan/delete/{id}', 'delete');
+// });
 
 // Route User
 Route::controller(UserController::class)->middleware('auth')->group(function (){
@@ -64,8 +64,9 @@ Route::controller(TahunController::class)->middleware('auth')->group(function ()
 
 // Route Ad Hoc
 Route::controller(AdHocController::class)->middleware('auth')->group(function(){
-    Route::get('/adhoc/{tahun}', 'index');
-    Route::get('/adhoc/{tahun}/search', 'search');
+    Route::get('/adhoc', 'index')->name('adhoc.index');
+    Route::get('/adhoc/search', 'search');
+    Route::get('/adhoc/filter/{filter}', 'filter');
 });
 
 // Route Pengalaman Kepemiluan
@@ -81,12 +82,13 @@ Route::controller(AdHocController::class)->middleware('auth')->group(function(){
 // Route Panwascam
 Route::controller(PanwascamController::class)->middleware('auth')->group(function(){
     Route::get('/panwascam/{tahun}', 'index');
+    Route::get('/panwascam/{tahun}/search', 'search');
     Route::get('/panwascam/{tahun}/add', 'add');
+    Route::get('/panwascam/{tahun}/{id}/edit', 'edit');
+    Route::get('/panwascam/{tahun}/filter/{filter}', 'filter');
+    Route::post('/panwascam/import', 'import');
     Route::post('/panwascam/{tahun}/store', 'store');
     Route::post('/panwascam/{tahun}/{id}/update', 'update');
-    Route::get('/panwascam/{tahun}/{id}/edit', 'edit');
-    Route::get('/panwascam/{tahun}/search', 'search');
-    Route::post('/panwascam/import', 'import');
     Route::post('/panwascam/delete/{id}', 'delete');
 });
 
@@ -94,10 +96,11 @@ Route::controller(PanwascamController::class)->middleware('auth')->group(functio
 Route::controller(PanwasdesController::class)->middleware('auth')->group(function(){
     Route::get('/panwasdes/{tahun}', 'index');
     Route::get('/panwasdes/{tahun}/search', 'search');
-    Route::post('/panwasdes/import', 'import');
     Route::get('/panwasdes/{tahun}/add', 'add');
-    Route::post('/panwasdes/{tahun}/store', 'store');
     Route::get('/panwasdes/{tahun}/{id}/edit', 'edit');
+    Route::get('/panwasdes/{tahun}/filter/{filter}', 'filter');
+    Route::post('/panwasdes/import', 'import');
+    Route::post('/panwasdes/{tahun}/store', 'store');
     Route::post('/panwasdes/{tahun}/{id}/update', 'update');
     Route::post('/panwasdes/delete/{id}', 'delete');
 });
@@ -106,10 +109,11 @@ Route::controller(PanwasdesController::class)->middleware('auth')->group(functio
 Route::controller(PanwastpsController::class)->middleware('auth')->group(function(){
     Route::get('/panwastps/{tahun}', 'index');
     Route::get('/panwastps/{tahun}/search', 'search');
-    Route::post('/panwastps/import', 'import');
     Route::get('/panwastps/{tahun}/add', 'add');
-    Route::post('/panwastps/{tahun}/store', 'store');
     Route::get('/panwastps/{tahun}/{id}/edit', 'edit');
+    Route::get('/panwastps/{tahun}/filter/{filter}', 'filter');
+    Route::post('/panwastps/import', 'import');
+    Route::post('/panwastps/{tahun}/store', 'store');
     Route::post('/panwastps/{tahun}/{id}/update', 'update');
     Route::post('/panwastps/delete/{id}', 'delete');
 });

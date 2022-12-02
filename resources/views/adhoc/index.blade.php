@@ -9,12 +9,25 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       @endif
-      <h3>Data Ad Hoc Tahun
-        {{ $selectedYear }}
-      </h3>
       <div class="d-flex justify-content-between">
-        <div class="col-6">
-          <form action="/adhoc/{{ $selectedYear }}/search" method="GET">
+        <h3>Data Pengawas AdHoc</h3>
+        <div class="dropdown">
+          <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class='bx bx-filter'></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId" style="">
+            <a class="dropdown-item" href="/adhoc/filter/nama">Nama</a>
+            <a class="dropdown-item" href="/adhoc/filter/kecamatan">Kecamatan</a>
+            <a class="dropdown-item" href="/adhoc/filter/jenis_kelamin">Jenis Kelamin</a>
+            <a class="dropdown-item" href="/adhoc/filter/pendidikan">Pendidikan</a>
+            <a class="dropdown-item" href="/adhoc/filter/tahun">Tahun</a>
+            <a class="dropdown-item" href="/adhoc/filter/keterangan">Keterangan</a>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="col-6 p-0">
+          <form action="/adhoc/search" method="GET">
             <div class="input-group">
               <input
                 type="text"
@@ -30,10 +43,11 @@
       </div>
     </div>
     <div class="card-body">
-      @if (isset($query))
-        <p>Menampilkan hasil dari pencarian : <b>{{ $query }}</b></p>
+      <span class="bg-dark p-2 text-white rounded">Total data : {{ $listPengawas->total() }}</span>
+      @if (isset($search))
+        <p class="mt-2">Menampilkan hasil dari pencarian : <b>{{ $search }}</b></p>
       @endif
-      <div class="table-responsive text-nowrap mb-3">
+      <div class="table-responsive text-nowrap my-3">
         <table class="table table-hover">
           <thead class="table-light">
             <tr class="text-nowrap">
@@ -74,5 +88,6 @@
       {{ $listPengawas->appends(Request::except('page'))->links() }}
     </div>
   </div>
+
     
 @endsection

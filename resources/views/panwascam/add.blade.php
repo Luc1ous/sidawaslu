@@ -174,6 +174,9 @@
           {{-- Pengalaman Kepemiluan --}}
           <label for="defaultFormControlInput" class="form-label">Pengalaman Kepemiluan</label>
           <textarea type="text" name="pengalaman_kepemiluan" class="form-control" placeholder="Pengalaman Kepemiluan" value="{{ old('pengalaman_kepemiluan') }}"></textarea>
+
+          <label for="defaultFormControlInput" class="form-label">Catatan Khusus</label>
+          <textarea type="text" name="catatan" class="form-control" placeholder="Catatan Khusus" value="{{ old('catatan') }}"></textarea>
           <div class="mt-3">
             <button type="submit" class="btn btn-sm btn-success">Simpan</button>
             <a href="/panwascam/{{ $tahun }}" class="btn btn-sm btn-secondary">Kembali</a>

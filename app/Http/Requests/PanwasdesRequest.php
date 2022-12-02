@@ -33,7 +33,6 @@ class PanwasdesRequest extends FormRequest
             'pekerjaan' => 'required',
             'alamat' => 'required',
             'nomor_hp' => 'required',
-            'pengalaman_kepemiluan' => 'required',
         ];
     }
 }

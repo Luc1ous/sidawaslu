@@ -46,10 +46,10 @@
             </div>
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">No TPS</label>
-              <input type="text" name="tps" class="form-control @error('tps') is-invalid
-              @enderror" id="defaultFormControlInput" value="{{ $pengawas->tps }}" aria-describedby="defaultFormControlHelp"
-              value="{{ old('tps') }}"/>
-              @error('tps')
+              <input type="text" name="no_tps" class="form-control @error('no_tps') is-invalid
+              @enderror" id="defaultFormControlInput" value="{{ $pengawas->no_tps }}" aria-describedby="defaultFormControlHelp"
+              value="{{ old('no_tps') }}"/>
+              @error('no_tps')
                   <div class="invalid-feedback">
                     {{ $message }}
                   </div>
@@ -114,6 +114,11 @@
           <div class="col">
             <label for="defaultFormControlInput" class="form-label">Pengalaman Kepemiluan</label>
             <textarea id="basic-default-message" name="pengalaman_kepemiluan" class="form-control" style="height: 100px">{{ $pengawas->pengalaman_kepemiluan }}</textarea>
+          </div>
+
+          <div class="col">
+            <label for="defaultFormControlInput" class="form-label">Catatan Khusus</label>
+            <textarea type="text" name="catatan" class="form-control" placeholder="Catatan Khusus" value="{{ old('catatan') }}">{{ $pengawas->catatan }}</textarea>
           </div>
 
           <div class="mt-3">

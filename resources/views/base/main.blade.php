@@ -19,6 +19,13 @@
 
     <meta name="description" content="" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../../template/assets/img/sidawaslu.png" />
 
@@ -70,13 +77,6 @@
                 <div>Dashboard</div>
               </a>
             </li>
-            {{-- Catatan Khusus --}}
-            <li class="menu-item {{ (request()->is('/')) ? 'active' : '' }}">
-              <a href="/catatan" class="menu-link">
-                <i class='menu-icon bx bxs-notepad'></i>
-                <div>Catatan Khusus</div>
-              </a>
-            </li>
             <!-- User -->
             <li class="menu-item">
               <a href="javascript:void(0)" class="menu-link menu-toggle">
@@ -96,19 +96,10 @@
             </li>
             {{-- Pengalaman Kepemiluan --}}
             <li class="menu-item {{ (request()->is('pengalaman')) ? 'active' : '' }}">
-              <a href="javascript:void(0)" class="menu-link menu-toggle">
+              <a href="/adhoc" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-pin"></i>
-                <div>Data AD HOC</div>
+                <div>Data AdHoc</div>
               </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  @foreach ($listTahun as $tahun)
-                    <a href="/adhoc/{{ $tahun->tahun }}" class="menu-link">
-                      <div data-i18n="Perfect Scrollbar">{{ $tahun->tahun }}</div>
-                    </a>
-                  @endforeach
-                </li>
-              </ul>
             </li>
             <!-- Data Pengawas Kecamatan -->
             <li class="menu-item">

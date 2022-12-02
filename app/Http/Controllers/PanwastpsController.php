@@ -14,27 +14,33 @@ use RealRashid\SweetAlert\Facades\Alert;
 class PanwastpsController extends Controller
 {
     public function index($tahun){
-        $selectedYear = $tahun;
-        $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Pengawas TPS')->orderBy('nama', 'asc')->paginate(10);
-        return view('panwastps.index', compact('selectedYear', 'listPengawas'));
+        $tahun = $tahun;
+        $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Pengawas TPS')->paginate(10);
+        return view('panwastps.index', compact('tahun', 'listPengawas'));
     }
 
     public function search($tahun, Request $request){
-        $selectedYear = $tahun;
-        $query = $request->search;
+        $tahun = $tahun;
+        $search = $request->search;
         if(!is_null($request->search)){
-            $listPengawas = AdHoc::where('tahun', $tahun)
-                            ->where('keterangan', 'Pengawas TPS')
-                            ->where('nama', 'like', "%".$query."%")
-                            ->orWhere('kecamatan', 'like', "%".$query."%")
-                            ->orWhere('jenis_kelamin', 'like', "%".$query."%")
-                            ->orderBy('nama', 'asc')
-                            ->paginate(10);
+            $listPengawas = AdHoc::tahun($tahun)->ket('Pengawas TPS')
+                            ->where(function ($query) use ($search){
+                                $query->where('nama', 'like', '%'.$search.'%')
+                                ->orWhere('kecamatan', 'like', '%'.$search.'%')
+                                ->orWhere('jenis_kelamin', 'like', '%'.$search.'%')
+                                ->orWhere('pendidikan', 'like', '%'.$search.'%');
+                            })->orderBy('nama', 'asc')->paginate(10);
         } else {
-            $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Pengawas TPS')->orderBy('nama', 'asc')->paginate(10);
+            $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Pengawas TPS')->paginate(10);
         }
 
-        return view('panwastps.index', compact('selectedYear', 'listPengawas', 'query'));
+        return view('panwastps.index', compact('tahun', 'listPengawas', 'search'));
+    }
+
+    public function filter($tahun, $filter){
+        $tahun = $tahun;
+        $listPengawas = AdHoc::tahun($tahun)->ket('pengawas tps')->orderBy($filter, 'asc')->paginate(10); 
+        return view('panwastps.index', compact('listPengawas', 'tahun'));
     }
 
     public function import(Request $request){
