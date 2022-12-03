@@ -7,10 +7,6 @@
       <div class="card-body">
         <form action="/panwascam/{{ $tahun }}/{{ $pengawas->id }}/update" method="POST">
           @csrf
-          <div class="col-6 mb-3">
-            <label for="defaultFormControlInput" class="form-label">Tahun</label>
-            <input type="text" name="nama" class="form-control" id="defaultFormControlInput" value="{{ $tahun }}" readonly/>
-          </div>
           <div class="row g-2 mb-3">
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Nama Lengkap</label>
@@ -100,12 +96,12 @@
             </div>
           </div>
           {{-- Checkbox Pengalaman Kepemiluan --}}
-          <div class="col">
+          <div class="col p-0">
             <label for="defaultFormControlInput" class="form-label">Pengalaman Kepemiluan</label>
             <textarea id="basic-default-message" name="pengalaman_kepemiluan" class="form-control" style="height: 100px">{{ $pengawas->pengalaman_kepemiluan }}</textarea>
           </div>
 
-          <div class="col">
+          <div class="col p-0">
             <label for="defaultFormControlInput" class="form-label">Catatan Khusus</label>
             <textarea type="text" name="catatan" class="form-control" placeholder="Catatan Khusus" value="{{ old('catatan') }}">{{ $pengawas->catatan }}</textarea>
           </div>

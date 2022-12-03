@@ -20,7 +20,6 @@
             <a class="dropdown-item" href="/panwasdes/{{ $tahun }}/filter/nama">Nama</a>
             <a class="dropdown-item" href="/panwasdes/{{ $tahun }}/filter/kecamatan">Kecamatan</a>
             <a class="dropdown-item" href="/panwasdes/{{ $tahun }}/filter/jenis_kelamin">Jenis Kelamin</a>
-            <a class="dropdown-item" href="/panwasdes/{{ $tahun }}/filter/pendidikan">Pendidikan</a>
           </div>
         </div>
       </div>

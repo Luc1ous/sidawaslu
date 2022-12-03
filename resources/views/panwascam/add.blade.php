@@ -7,7 +7,7 @@
       <div class="card-body">
         <form action="/panwascam/{{ $tahun }}/store" method="POST">
           @csrf
-          <div class="col-6 mb-3">
+          <div class="col-6 mb-3 p-0">
             <label for="defaultFormControlInput" class="form-label">Tahun</label>
             <input type="text" name="nama" class="form-control" id="defaultFormControlInput" value="{{ $tahun }}" readonly/>
           </div>
