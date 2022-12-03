@@ -2,6 +2,12 @@
 @section('content')
   <div class="card">
     <div class="card-header">
+      @if (session()->has('error'))
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <span class="fw-bold">Gagal : </span> {{ session('error') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
       @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible" role="alert">
           <span class="fw-bold">Sukses : </span> {{ session('success') }}

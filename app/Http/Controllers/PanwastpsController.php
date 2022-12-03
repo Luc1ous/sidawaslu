@@ -47,9 +47,13 @@ class PanwastpsController extends Controller
         $request->validate([
             'file' => 'required'
         ]);
-        // Excel::import(new PanwastpsImport, $request->file('file'));
-        Excel::import(new AdHocPanwastpsImport, $request->file('file'));
-        return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
+        try {
+            Excel::import(new AdHocPanwastpsImport, $request->file('file'));
+            return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
+        } catch (\Throwable $e) {
+            report($e);
+            return redirect()->back()->with('error', 'Data gagal ditambahkan. Pastikan file yang di upload sudah benar !');
+        }
     }
 
     public function add($tahun){

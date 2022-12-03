@@ -8,9 +8,11 @@ use App\Imports\PanwascamImport;
 use App\Models\AdHoc;
 use App\Models\Panwascam;
 use App\Models\PengalamanKepemiluan;
+use Exception;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
+use Throwable;
 
 class PanwascamController extends Controller
 {
@@ -36,9 +38,14 @@ class PanwascamController extends Controller
             'file' => 'required'
         ]);
 
-        // Excel::import(new PanwascamImport, $request->file('file'));
-        Excel::import(new AdHocPanwascamImport, $request->file('file'));
-        return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
+        try {
+            Excel::import(new AdHocPanwascamImport, $request->file('file'));
+            return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
+        } catch (Throwable $e) {
+            report($e);
+            return redirect()->back()->with('error', 'Data gagal ditambahkan. Pastikan file yang di upload sudah benar !');
+        }
+        
     }
 
     public function search($tahun, Request $request){
