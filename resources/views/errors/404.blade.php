@@ -3,15 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>404 Custom Error Page Example</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>404 Not Found</title>
+    <link rel="stylesheet" href={{ asset("template/assets/vendor/css/core.css") }} class="template-customizer-core-css" />
+    <link rel="stylesheet" href={{ asset("template/assets/vendor/css/theme-default.css") }} class="template-customizer-theme-css" />
+    <link rel="stylesheet" href={{ asset("template/assets/css/demo.css") }} />
 </head>
+<style>
+    body {
+        font-family: 'Nunito', sans-serif;
+    }
+</style>
 <body>
-    <div class="container mt-5 pt-5">
-        <div class="alert alert-danger text-center">
-            <h2 class="display-3">404</h2>
-            <p class="display-5">Oops! Something is wrong.</p>
-            <p class="display-5">Back to <a href="/" class="">Dashboard</a></p>
+    <div class="container">
+        <div class="text-center mt-5 py-5">
+            <img src="{{ asset('template/assets/img/404 error.png') }}" width="500">
+            <br>
+            <h2 class="text-danger">Page Not Found</h2>
+            <a href="/" class="btn btn-danger">Back to Dashboard</a>
         </div>
     </div>
 </body>
