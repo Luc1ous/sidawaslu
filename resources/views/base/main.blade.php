@@ -70,6 +70,9 @@
             </a>
           </div>
           <ul class="menu-inner py-1">
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Dashboard</span>
+            </li>
             <!-- Dashboard -->
             <li class="menu-item {{ (request()->is('/')) ? 'active' : '' }}">
               <a href="/" class="menu-link">
@@ -77,7 +80,11 @@
                 <div>Dashboard</div>
               </a>
             </li>
-            <!-- User -->
+
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Data Master</span>
+            </li>
+            <!-- Data Master -->
             <li class="menu-item">
               <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class='menu-icon bx bxs-archive'></i>
@@ -94,12 +101,21 @@
                 </li>
               </ul>
             </li>
-            {{-- Pengalaman Kepemiluan --}}
+
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Data Ad Hoc</span>
+            </li>
+            {{-- Data AdHoc --}}
             <li class="menu-item {{ (request()->is('pengalaman')) ? 'active' : '' }}">
               <a href="/adhoc" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-pin"></i>
-                <div>Data AdHoc</div>
+                <div>Data Ad Hoc</div>
               </a>
+            </li>
+
+            {{-- Data Pengawas --}}
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Data Pengawas</span>
             </li>
             <!-- Data Pengawas Kecamatan -->
             <li class="menu-item">
