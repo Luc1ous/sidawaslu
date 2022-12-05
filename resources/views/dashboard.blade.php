@@ -11,7 +11,7 @@
       <h2 class="text-dark fw-semibold">Selamat Datang di Sidawaslu</h2>
     </div>                
   </div>
-  <h4>Total Seluruh Data Pengawas</h4>
+  <h4 class="my-3">Total Seluruh Data Pengawas</h4>
   <div class="row">
     <div class="col my-2">
       <div class="card">
@@ -27,7 +27,7 @@
       </div>
     </div>
   </div>
-  <h4>Total Data Pengawas</h4>
+  <h4 class="my-3">Total Data Pengawas</h4>
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4 my-2">
       <div class="card">

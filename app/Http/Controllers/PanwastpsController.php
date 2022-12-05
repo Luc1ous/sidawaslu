@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdHoc;
-use App\Models\Panwastps;
 use Illuminate\Http\Request;
-use App\Imports\PanwastpsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\AdHocPanwastpsImport;
 use App\Http\Requests\PanwastpsRequest;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class PanwastpsController extends Controller
 {

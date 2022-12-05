@@ -27,6 +27,7 @@ class AdHocPanwastpsImport implements ToModel, WithHeadingRow
             'nomor_hp' => $row['nomor_hp'],
 	        'pendidikan' => $row['pendidikan'],
             'pengalaman_kepemiluan' => $row['pengalaman_kepemiluan'],
+            'catatan' => $row['catatan'],
             'keterangan' => 'Pengawas TPS',
             'tahun' => $row['tahun'],
         ]);

@@ -135,6 +135,11 @@
                   </div>
               @enderror
             </div>
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Pendidikan</label>
+              <input type="text" name="pendidikan" class="form-control" id="defaultFormControlInput" value="{{ old('pendidikan') }}" aria-describedby="defaultFormControlHelp" placeholder="Pendidikan"
+              />
+            </div>
           </div>
           
           <label for="defaultFormControlInput" class="form-label">Pengalaman Kepemiluan</label>

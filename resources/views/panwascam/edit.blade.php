@@ -95,7 +95,7 @@
               />
             </div>
           </div>
-          {{-- Checkbox Pengalaman Kepemiluan --}}
+          
           <div class="col p-0">
             <label for="defaultFormControlInput" class="form-label">Pengalaman Kepemiluan</label>
             <textarea id="basic-default-message" name="pengalaman_kepemiluan" class="form-control" style="height: 100px">{{ $pengawas->pengalaman_kepemiluan }}</textarea>

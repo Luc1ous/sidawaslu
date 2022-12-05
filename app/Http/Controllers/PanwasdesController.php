@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdHoc;
-use App\Models\Panwasdes;
 use Illuminate\Http\Request;
-use App\Imports\PanwasdesImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\AdHocPanwasdesImport;
 use App\Http\Requests\PanwasdesRequest;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class PanwasdesController extends Controller
 {

@@ -32,6 +32,7 @@ class AdHocPanwascamImport implements ToModel, WithHeadingRow
             'alamat' => $row['alamat'],
             'nomor_hp' => $row['nomor_hp'],
             'pengalaman_kepemiluan' => $row['pengalaman_kepemiluan'],
+            'catatan' => $row['catatan'],
             'keterangan' => 'Panwascam',
             'tahun' => $row['tahun'],
         ]);

@@ -4,14 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PanwascamRequest;
 use App\Imports\AdHocPanwascamImport;
-use App\Imports\PanwascamImport;
 use App\Models\AdHoc;
-use App\Models\Panwascam;
-use App\Models\PengalamanKepemiluan;
-use Exception;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use RealRashid\SweetAlert\Facades\Alert;
 use Throwable;
 
 class PanwascamController extends Controller

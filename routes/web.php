@@ -37,15 +37,6 @@ Route::post('/register', [RegisterController::class, 'register']);
 // Route Dashboard
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
-// Route Catatan
-// Route::controller(CatatanController::class)->middleware('auth')->group(function (){
-//     Route::get('/catatan', 'index');
-//     Route::get('/catatan/add', 'add');
-//     Route::get('/catatan/edit/{id}', 'edit');
-//     Route::post('/catatan/store', 'store');
-//     Route::post('/catatan/update/{id}', 'update');
-//     Route::post('/catatan/delete/{id}', 'delete');
-// });
 
 // Route User
 Route::controller(UserController::class)->middleware('auth')->group(function (){
@@ -68,16 +59,6 @@ Route::controller(AdHocController::class)->middleware('auth')->group(function(){
     Route::get('/adhoc/search', 'search');
     Route::get('/adhoc/filter/{filter}', 'filter');
 });
-
-// Route Pengalaman Kepemiluan
-// Route::controller(PengalamanKepemiluanController::class)->middleware('auth')->group(function (){
-//     Route::get('/pengalaman', 'index');
-//     Route::get('/pengalaman/add', 'add');
-//     Route::get('/pengalaman/{id}', 'view');
-//     Route::get('/pengalaman/delete/{id}', 'delete');
-//     Route::post('/pengalaman/add', 'store');
-//     Route::post('/pengalaman/edit/{id}', 'update');
-// });
 
 // Route Panwascam
 Route::controller(PanwascamController::class)->middleware('auth')->group(function(){
