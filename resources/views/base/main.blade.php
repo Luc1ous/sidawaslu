@@ -59,6 +59,12 @@
     <script src={{ asset("template/assets/js/config.js") }}></script>
   </head>
 
+  <style>
+    .active {
+      background-color: rgb(2, 2, 150);
+    }
+  </style>
+
   <body>
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -74,8 +80,8 @@
               <span class="menu-header-text">Dashboard</span>
             </li>
             <!-- Dashboard -->
-            <li class="menu-item {{ (request()->is('/')) ? 'active' : '' }}">
-              <a href="/" class="menu-link">
+            <li class="menu-item ">
+              <a href="/" class="menu-link {{ (request()->is('/')) ? 'active rounded' : '' }}">
                 <i class="menu-icon tf-icons bx bxs-dashboard"></i>
                 <div>Dashboard</div>
               </a>
@@ -106,8 +112,8 @@
               <span class="menu-header-text">Data Ad Hoc</span>
             </li>
             {{-- Data AdHoc --}}
-            <li class="menu-item {{ (request()->is('pengalaman')) ? 'active' : '' }}">
-              <a href="/adhoc" class="menu-link">
+            <li class="menu-item">
+              <a href="/adhoc" class="menu-link {{ (request()->is('adhoc')) ? 'active rounded' : '' }}">
                 <i class="menu-icon tf-icons bx bxs-user-pin"></i>
                 <div>Data Ad Hoc</div>
               </a>
