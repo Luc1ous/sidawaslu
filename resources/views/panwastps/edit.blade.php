@@ -2,7 +2,7 @@
 @section('content')
     <div class="card">
       <div class="card-header">
-        <h3>Edit Data Panwas TPS</h3>
+        <h3>Edit Data Pengawas TPS</h3>
       </div>
       <div class="card-body">
         <form action="/panwastps/{{ $tahun }}/{{ $pengawas->id }}/update" method="POST">
