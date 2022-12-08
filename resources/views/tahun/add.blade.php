@@ -15,7 +15,7 @@
                 {{ $message }}
               </div>
             @enderror
-            <button class="btn btn-success my-4" type="submit">Tambah</button>
+            <button class="btn btn-sm btn-success my-4" type="submit">Tambah</button>
           </form>
         </div>
       </div>

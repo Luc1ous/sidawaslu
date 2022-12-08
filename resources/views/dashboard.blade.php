@@ -76,7 +76,7 @@
       <div class="card">
         <div class="card-body">
           <div class="d-flex align-items-center">
-            <img src="../template/assets/img/man.png" width="40" alt="">
+            <img src="../template/assets/img/man2.png" width="40" alt="">
             <span class="text-dark ms-3">
               <h4>{{ $male }} orang</h4>
               Total Laki - Laki
@@ -89,7 +89,7 @@
       <div class="card">
         <div class="card-body">
           <div class="d-flex align-items-center">
-            <img src="../template/assets/img/man.png" width="40" alt="">
+            <img src="../template/assets/img/woman.png" width="40" alt="">
             <span class="text-dark ms-3">
               <h4>{{ $female }} orang</h4>
               Total Perempuan

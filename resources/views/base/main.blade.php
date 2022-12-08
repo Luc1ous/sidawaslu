@@ -61,7 +61,7 @@
 
   <style>
     .active {
-      background-color: rgb(2, 2, 150);
+      background-color: none;
     }
   </style>
 
