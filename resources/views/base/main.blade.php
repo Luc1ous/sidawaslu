@@ -27,7 +27,7 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../template/assets/img/sidawaslu.png" />
+    <link rel="icon" type="image/x-icon" href={{ asset("template/assets/img/sidawaslu.png") }} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -109,19 +109,19 @@
             </li>
 
             <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Data Ad Hoc</span>
+              <span class="menu-header-text">Rekap Data</span>
             </li>
             {{-- Data AdHoc --}}
             <li class="menu-item">
               <a href="/adhoc" class="menu-link {{ (request()->is('adhoc')) ? 'active rounded' : '' }}">
                 <i class="menu-icon tf-icons bx bxs-user-pin"></i>
-                <div>Data Ad Hoc</div>
+                <div>Rekap Data Ad Hoc</div>
               </a>
             </li>
 
             {{-- Data Pengawas --}}
             <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Data Pengawas</span>
+              <span class="menu-header-text">Data Pengawas Ad Hoc</span>
             </li>
             <!-- Data Pengawas Kecamatan -->
             <li class="menu-item">

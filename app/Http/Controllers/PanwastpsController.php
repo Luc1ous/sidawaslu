@@ -57,7 +57,7 @@ class PanwastpsController extends Controller
         return view('panwastps.add', compact('tahun'));
     }
 
-    public function store(PanwastpsRequest $request, $tahun){
+    public function store(Request $request, $tahun){
         $request['keterangan'] = 'Pengawas TPS';
         $request['tahun'] = $tahun;
         AdHoc::create($request->all());
@@ -69,7 +69,7 @@ class PanwastpsController extends Controller
         return view('panwastps.edit', compact('pengawas', 'tahun'));
     }
 
-    public function update(PanwastpsRequest $request, $tahun, $id){
+    public function update(Request $request, $tahun, $id){
         $request['tahun'] = $tahun;
         AdHoc::find($id)->update($request->all());
         return redirect()->to('/panwastps/'.$tahun)->with('success', 'Data berhasil diupdate');

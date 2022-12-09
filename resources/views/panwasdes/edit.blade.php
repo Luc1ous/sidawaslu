@@ -7,87 +7,73 @@
       <div class="card-body">
         <form action="/panwasdes/{{ $tahun }}/{{ $pengawas->id }}/update" method="POST">
           @csrf
-          @method('POST')
           <div class="row g-2 mb-3">
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Nama Lengkap</label>
-              <input type="text" name="nama" class="form-control @error('nama') is-invalid
-              @enderror" id="defaultFormControlInput" value="{{ $pengawas->nama }}" aria-describedby="defaultFormControlHelp"
-              value="{{ old('nama') }}"/>
-              @error('nama')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-              @enderror
+              <input type="text" name="nama" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->nama }}" aria-describedby="defaultFormControlHelp"
+              />
             </div>
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Kecamatan</label>
-              <input type="text" name="kecamatan" class="form-control @error('kecamatan') is-invalid
-              @enderror" id="defaultFormControlInput" value="{{ $pengawas->kecamatan }}" aria-describedby="defaultFormControlHelp"
-              value="{{ old('kecamatan') }}"/>
-              @error('kecamatan')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-              @enderror
+              <input type="text" name="kecamatan" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->kecamatan }}" aria-describedby="defaultFormControlHelp"
+              />
             </div>
           </div>
           <div class="row g-2 mb-3">
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Kelurahan</label>
-              <input type="text" name="kelurahan" class="form-control @error('kelurahan') is-invalid
-              @enderror" id="defaultFormControlInput" value="{{ $pengawas->kelurahan }}" aria-describedby="defaultFormControlHelp"
-              value="{{ old('kelurahan') }}"/>
-              @error('kelurahan')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-              @enderror
+              <input type="text" name="kelurahan" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->kelurahan }}" aria-describedby="defaultFormControlHelp"
+              />
             </div>
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Jabatan</label>
-              <input type="text" name="jabatan" class="form-control @error('jabatan') is-invalid
-              @enderror" id="defaultFormControlInput" value="{{ $pengawas->jabatan }}" aria-describedby="defaultFormControlHelp"
-              value="{{ old('jabatan') }}"/>
-              @error('jabatan')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-              @enderror
+              <input type="text" name="jabatan" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->jabatan }}" aria-describedby="defaultFormControlHelp"
+              />
             </div>
           </div>
           <div class="row g-2 mb-3">
             <div class="col">
-              <label for="defaultFormControlInput" class="form-label">Tempat Tanggal Lahir</label>
-              <input type="text" name="ttl" class="form-control @error('ttl') is-invalid
-              @enderror" id="defaultFormControlInput" value="{{ $pengawas->ttl }}" aria-describedby="defaultFormControlHelp"
-              value="{{ old('ttl') }}"/>
-              @error('ttl')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-              @enderror
+              <label for="defaultFormControlInput" class="form-label">NIK</label>
+              <input type="text" name="nik" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->nik }}" aria-describedby="defaultFormControlHelp"
+              />
             </div>
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">No TPS</label>
+              <input type="text" name="no_tps" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->no_tps }}" aria-describedby="defaultFormControlHelp"
+              />
+            </div>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Tempat Lahir</label>
+              <input type="text" name="tempat_lahir" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->tempat_lahir }}" aria-describedby="defaultFormControlHelp"
+              />
+            </div>
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Tanggal Lahir</label>
+              <input type="text" name="tanggal_lahir" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->tanggal_lahir }}" aria-describedby="defaultFormControlHelp"
+              />
+            </div>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Nomor SK</label>
+              <input type="text" name="nomor_sk" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->nomor_sk }}" aria-describedby="defaultFormControlHelp"
+              />
+            </div>
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Tanggal SK</label>
+              <input type="text" name="tanggal_sk" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->tanggal_sk }}" aria-describedby="defaultFormControlHelp"
+              />
+            </div>
+          </div>
+          <div class="row g-2 mb-3">
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Jenis Kelamin</label>
               <select class="form-select" name="jenis_kelamin">
                 <option value="Laki - Laki" {{ $pengawas->jenis_kelamin == 'Laki - Laki' ? 'selected' : '' }}>Laki - Laki</option>
                 <option value="Perempuan" {{ $pengawas->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
               </select>
-            </div>
-          </div>
-
-          <div class="row g-2 mb-3">
-            <div class="col">
-              <label for="defaultFormControlInput" class="form-label">Agama</label>
-              <input type="text" name="agama" class="form-control @error('agama') is-invalid
-              @enderror" id="defaultFormControlInput" value="{{ $pengawas->agama }}" aria-describedby="defaultFormControlHelp"
-              value="{{ old('agama') }}"/>
-              @error('agama')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-              @enderror
             </div>
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Disabilitas</label>
@@ -97,43 +83,11 @@
               </select>
             </div>
           </div>
-
           <div class="row g-2 mb-3">
             <div class="col">
-              <label for="defaultFormControlInput" class="form-label">Pekerjaan</label>
-              <input type="text" name="pekerjaan" class="form-control @error('pekerjaan') is-invalid
-              @enderror" id="defaultFormControlInput" value="{{ $pengawas->pekerjaan }}" aria-describedby="defaultFormControlHelp"
-              value="{{ old('pekerjaan') }}"/>
-              @error('pekerjaan')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-              @enderror
-            </div>
-            <div class="col">
-              <label for="defaultFormControlInput" class="form-label">Alamat</label>
-              <input type="text" name="alamat" class="form-control @error('alamat') is-invalid
-              @enderror" id="defaultFormControlInput" value="{{ $pengawas->alamat }}" aria-describedby="defaultFormControlHelp"
-              value="{{ old('alamat') }}"/>
-              @error('alamat')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-              @enderror
-            </div>
-          </div>
-
-          <div class="row g-2 mb-3">  
-            <div class="col">
-              <label for="defaultFormControlInput" class="form-label">No HP</label>
-              <input type="text" name="nomor_hp" class="form-control @error('nomor_hp') is-invalid
-              @enderror" id="defaultFormControlInput" value="{{ $pengawas->nomor_hp }}" aria-describedby="defaultFormControlHelp"
-              value="{{ old('nomor_hp') }}"/>
-              @error('nomor_hp')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-              @enderror
+              <label for="defaultFormControlInput" class="form-label">Nomor HP</label>
+              <input type="text" name="nomor_hp" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->nomor_hp }}" aria-describedby="defaultFormControlHelp"
+              />
             </div>
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Pendidikan</label>
@@ -141,17 +95,40 @@
               />
             </div>
           </div>
-
-          <div class="col p-0">
-            <label for="defaultFormControlInput" class="form-label">Pengalaman Kepemiluan</label>
-            <textarea id="basic-default-message" name="pengalaman_kepemiluan" class="form-control" style="height: 100px">{{ $pengawas->pengalaman_kepemiluan }}</textarea>
+          <div class="row g-2 mb-3">
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Agama</label>
+              <input type="text" name="agama" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->agama }}" aria-describedby="defaultFormControlHelp"
+              />
+            </div>
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Pekerjaan</label>
+              <input type="text" name="pekerjaan" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->pekerjaan }}" aria-describedby="defaultFormControlHelp"
+              />
+            </div>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Alamat</label>
+              <textarea type="text" name="alamat" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp"
+              >{{ $pengawas->alamat }}</textarea>
+            </div>
+          </div>
+          
+          <div class="row g-2 mb-3">
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Pengalaman Kepemiluan</label>
+              <textarea id="basic-default-message" name="pengalaman_kepemiluan" class="form-control" style="height: 100px">{{ $pengawas->pengalaman_kepemiluan }}</textarea>
+            </div>
           </div>
 
-          <div class="col p-0">
-            <label for="defaultFormControlInput" class="form-label">Catatan Khusus</label>
-            <textarea type="text" name="catatan" class="form-control" placeholder="Catatan Khusus" value="{{ old('catatan') }}">{{ $pengawas->catatan }}</textarea>
+          <div class="row g-2 mb-3">
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Catatan Khusus</label>
+              <textarea type="text" name="catatan" class="form-control" placeholder="Catatan Khusus" value="{{ old('catatan') }}">{{ $pengawas->catatan }}</textarea>
+            </div>
           </div>
-
+          
           <div class="mt-3">
             <button type="submit" class="btn btn-sm btn-success">Simpan</button>
             <a href="/panwasdes/{{ $tahun }}" class="btn btn-sm btn-secondary">Kembali</a>

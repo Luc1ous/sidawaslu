@@ -21,7 +21,7 @@ class PanwascamController extends Controller
         return view('panwascam.add', compact('tahun'));
     }
 
-    public function store(PanwascamRequest $request, $tahun){
+    public function store(Request $request, $tahun){
         $request['keterangan'] = 'Panwascam';
         $request["tahun"] = $tahun;
         AdHoc::create($request->all());
@@ -33,13 +33,13 @@ class PanwascamController extends Controller
             'file' => 'required'
         ]);
 
-        try {
-            Excel::import(new AdHocPanwascamImport, $request->file('file'));
-            return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
-        } catch (Throwable $e) {
-            report($e);
-            return redirect()->back()->with('error', 'Data gagal ditambahkan. Pastikan file yang di upload sudah benar !');
-        }
+        Excel::import(new AdHocPanwascamImport, $request->file('file'));
+        return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
+        // try {
+        // } catch (Throwable $e) {
+        //     report($e);
+        //     return redirect()->back()->with('error', 'Data gagal ditambahkan. Pastikan file yang di upload sudah benar !');
+        // }
         
     }
 
@@ -72,7 +72,7 @@ class PanwascamController extends Controller
         return view('panwascam.edit', compact('pengawas', 'tanggal_lahir', 'tahun'));
     }
 
-    public function update(PanwascamRequest $request, $tahun, $id){
+    public function update(Request $request, $tahun, $id){
         $request['tahun'] = $tahun;
         AdHoc::find($id)->update($request->all());
         return redirect()->to('/panwascam/'.$tahun)->with('success', 'Data berhasil diupdate');

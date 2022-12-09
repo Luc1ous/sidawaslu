@@ -140,7 +140,7 @@
               </tr>
             @empty
               <tr>
-                <td colspan="8" class="fw-bold text-center">Data kosong / tidak ditemukan</td>
+                <td colspan="9" class="fw-bold text-center">Data kosong / tidak ditemukan</td>
               </tr>
             @endforelse
           </tbody>

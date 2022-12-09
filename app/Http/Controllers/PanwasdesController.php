@@ -55,7 +55,7 @@ class PanwasdesController extends Controller
         return view('panwasdes.add', compact('tahun'));
     }
 
-    public function store(PanwasdesRequest $request, $tahun){
+    public function store(Request $request, $tahun){
         $request['keterangan'] = 'Panwasdes';
         $request['tahun'] = $tahun;
         AdHoc::create($request->all());
@@ -67,7 +67,7 @@ class PanwasdesController extends Controller
         return view('panwasdes.edit', compact('pengawas', 'tahun'));
     }
 
-    public function update(PanwasdesRequest $request, $tahun, $id){
+    public function update(Request $request, $tahun, $id){
         $request['tahun'] = $tahun;
         AdHoc::find($id)->update($request->all());
         return redirect()->to('/panwasdes/'.$tahun)->with('success', 'Data berhasil diupdate');

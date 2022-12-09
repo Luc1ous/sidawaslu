@@ -11,6 +11,7 @@ use App\Http\Controllers\PengalamanKepemiluanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TahunController;
 use App\Http\Controllers\UserController;
+use App\Models\AdHoc;
 use App\Models\Panwastps;
 use App\Models\Tahun;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/cek', function(){
+    $data = AdHoc::where('keterangan', 'panwascam')->get();
+    dd($data);
+});
 
 // Route Login & Logout
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

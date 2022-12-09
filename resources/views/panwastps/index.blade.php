@@ -25,6 +25,7 @@
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId" style="">
             <a class="dropdown-item" href="/panwastps/{{ $tahun }}/filter/nama">Nama</a>
             <a class="dropdown-item" href="/panwastps/{{ $tahun }}/filter/kecamatan">Kecamatan</a>
+            <a class="dropdown-item" href="/panwastps/{{ $tahun }}/filter/kelurahan">Kelurahan</a>
             <a class="dropdown-item" href="/panwastps/{{ $tahun }}/filter/jenis_kelamin">Jenis Kelamin</a>
           </div>
         </div>
@@ -84,6 +85,7 @@
               <th>No</th>
               <th>Nama</th>
               <th>Kecamatan</th>
+              <th>Kelurahan</th>
               <th>No Hp</th>
               <th>Jenis Kelamin</th>
               <th>Tahun</th>
@@ -119,6 +121,7 @@
                 <td>{{ $listPengawas->firstItem() + $index }}</td>
                 <td>{{ $pengawas->nama }}</td>
                 <td>{{ $pengawas->kecamatan }}</td>
+                <td>{{ $pengawas->kelurahan }}</td>
                 <td>{{ $pengawas->nomor_hp }}</td>
                 <td>{{ $pengawas->jenis_kelamin }}</td>
                 <td>{{ $pengawas->tahun }}</td>

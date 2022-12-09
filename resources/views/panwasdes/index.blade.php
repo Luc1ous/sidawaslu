@@ -25,6 +25,7 @@
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId" style="">
             <a class="dropdown-item" href="/panwasdes/{{ $tahun }}/filter/nama">Nama</a>
             <a class="dropdown-item" href="/panwasdes/{{ $tahun }}/filter/kecamatan">Kecamatan</a>
+            <a class="dropdown-item" href="/panwasdes/{{ $tahun }}/filter/kelurahan">Kelurahan</a>
             <a class="dropdown-item" href="/panwasdes/{{ $tahun }}/filter/jenis_kelamin">Jenis Kelamin</a>
           </div>
         </div>
@@ -84,9 +85,9 @@
               <th>No</th>
               <th>Nama</th>
               <th>Kecamatan</th>
+              <th>Kelurahan</th>
               <th>No Hp</th>
               <th>Jenis Kelamin</th>
-              <th>Tempat Tanggal Lahir</th>
               <th>Tahun</th>
               <th>Keterangan</th>
               <th>Action</th>
@@ -120,9 +121,9 @@
                 <td>{{ $listPengawas->firstItem() + $index }}</td>
                 <td>{{ $pengawas->nama }}</td>
                 <td>{{ $pengawas->kecamatan }}</td>
+                <td>{{ $pengawas->kelurahan }}</td>
                 <td>{{ $pengawas->nomor_hp }}</td>
                 <td>{{ $pengawas->jenis_kelamin }}</td>
-                <td>{{ $pengawas->ttl }}</td>
                 <td>{{ $pengawas->tahun }}</td>
                 <td>{{ $pengawas->keterangan }}</td>
                 <td>
@@ -138,7 +139,7 @@
               </tr>
             @empty
               <tr>
-                <td colspan="8" class="fw-bold text-center">Data kosong / tidak ditemukan</td>
+                <td colspan="9" class="fw-bold text-center">Data kosong / tidak ditemukan</td>
               </tr>
             @endforelse
           </tbody>

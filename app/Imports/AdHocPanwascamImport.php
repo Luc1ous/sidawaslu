@@ -19,11 +19,14 @@ class AdHocPanwascamImport implements ToModel, WithHeadingRow
         return new AdHoc([
             'nama' => $row['nama'],
             'kecamatan' => $row['kecamatan'],
+            'kelurahan' => $row['kelurahan'],
             'jabatan' => $row['jabatan'],
             'nik' => $row['nik'],
+            'no_tps' => $row['no_tps'],
             'tempat_lahir' => $row['tempat_lahir'],
-            'tanggal_lahir' => Date::excelToDateTimeObject($row['tanggal_lahir']),
+            'tanggal_lahir' => $row['tanggal_lahir'],
             'nomor_sk' => $row['nomor_sk'],
+            'tanggal_sk' => $row['tanggal_sk'],
             'jenis_kelamin' => $row['jenis_kelamin'],
             'agama' => $row['agama'],
             'disabilitas' => $row['disabilitas'],
@@ -31,10 +34,10 @@ class AdHocPanwascamImport implements ToModel, WithHeadingRow
             'pekerjaan' => $row['pekerjaan'],
             'alamat' => $row['alamat'],
             'nomor_hp' => $row['nomor_hp'],
-            'pengalaman_kepemiluan' => $row['pengalaman_kepemiluan'],
-            'catatan' => $row['catatan'],
             'keterangan' => 'Panwascam',
             'tahun' => $row['tahun'],
+            'pengalaman_kepemiluan' => $row['pengalaman_kepemiluan'],
+            'catatan' => $row['catatan'],
         ]);
     }
 }

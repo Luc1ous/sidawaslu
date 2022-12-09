@@ -21,13 +21,25 @@
           </div>
           <div class="row g-2 mb-3">
             <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Kelurahan</label>
+              <input type="text" name="kelurahan" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->kelurahan }}" aria-describedby="defaultFormControlHelp"
+              />
+            </div>
+            <div class="col">
               <label for="defaultFormControlInput" class="form-label">Jabatan</label>
               <input type="text" name="jabatan" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->jabatan }}" aria-describedby="defaultFormControlHelp"
               />
             </div>
+          </div>
+          <div class="row g-2 mb-3">
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">NIK</label>
               <input type="text" name="nik" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->nik }}" aria-describedby="defaultFormControlHelp"
+              />
+            </div>
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">No TPS</label>
+              <input type="text" name="no_tps" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->no_tps }}" aria-describedby="defaultFormControlHelp"
               />
             </div>
           </div>
@@ -39,7 +51,7 @@
             </div>
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Tanggal Lahir</label>
-              <input type="text" name="tanggal_lahir" class="form-control" id="defaultFormControlInput" value="{{ $tanggal_lahir }}" aria-describedby="defaultFormControlHelp"
+              <input type="text" name="tanggal_lahir" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->tanggal_lahir }}" aria-describedby="defaultFormControlHelp"
               />
             </div>
           </div>
@@ -50,18 +62,18 @@
               />
             </div>
             <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Tanggal SK</label>
+              <input type="text" name="tanggal_sk" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->tanggal_sk }}" aria-describedby="defaultFormControlHelp"
+              />
+            </div>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col">
               <label for="defaultFormControlInput" class="form-label">Jenis Kelamin</label>
               <select class="form-select" name="jenis_kelamin">
                 <option value="Laki - Laki" {{ $pengawas->jenis_kelamin == 'Laki - Laki' ? 'selected' : '' }}>Laki - Laki</option>
                 <option value="Perempuan" {{ $pengawas->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
               </select>
-            </div>
-          </div>
-          <div class="row g-2 mb-3">
-            <div class="col">
-              <label for="defaultFormControlInput" class="form-label">Agama</label>
-              <input type="text" name="agama" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->agama }}" aria-describedby="defaultFormControlHelp"
-              />
             </div>
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Disabilitas</label>
@@ -73,8 +85,20 @@
           </div>
           <div class="row g-2 mb-3">
             <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Nomor HP</label>
+              <input type="text" name="nomor_hp" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->nomor_hp }}" aria-describedby="defaultFormControlHelp"
+              />
+            </div>
+            <div class="col">
               <label for="defaultFormControlInput" class="form-label">Pendidikan</label>
               <input type="text" name="pendidikan" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->pendidikan }}" aria-describedby="defaultFormControlHelp"
+              />
+            </div>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Agama</label>
+              <input type="text" name="agama" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->agama }}" aria-describedby="defaultFormControlHelp"
               />
             </div>
             <div class="col">
@@ -86,24 +110,23 @@
           <div class="row g-2 mb-3">
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Alamat</label>
-              <input type="text" name="alamat" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->alamat }}" aria-describedby="defaultFormControlHelp"
-              />
-            </div>
-            <div class="col">
-              <label for="defaultFormControlInput" class="form-label">No HP</label>
-              <input type="text" name="nomor_hp" class="form-control" id="defaultFormControlInput" value="{{ $pengawas->nomor_hp }}" aria-describedby="defaultFormControlHelp"
-              />
+              <textarea type="text" name="alamat" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp"
+              >{{ $pengawas->alamat }}</textarea>
             </div>
           </div>
           
-          <div class="col p-0">
-            <label for="defaultFormControlInput" class="form-label">Pengalaman Kepemiluan</label>
-            <textarea id="basic-default-message" name="pengalaman_kepemiluan" class="form-control" style="height: 100px">{{ $pengawas->pengalaman_kepemiluan }}</textarea>
+          <div class="row g-2 mb-3">
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Pengalaman Kepemiluan</label>
+              <textarea id="basic-default-message" name="pengalaman_kepemiluan" class="form-control" style="height: 100px">{{ $pengawas->pengalaman_kepemiluan }}</textarea>
+            </div>
           </div>
 
-          <div class="col p-0">
-            <label for="defaultFormControlInput" class="form-label">Catatan Khusus</label>
-            <textarea type="text" name="catatan" class="form-control" placeholder="Catatan Khusus" value="{{ old('catatan') }}">{{ $pengawas->catatan }}</textarea>
+          <div class="row g-2 mb-3">
+            <div class="col">
+              <label for="defaultFormControlInput" class="form-label">Catatan Khusus</label>
+              <textarea type="text" name="catatan" class="form-control" placeholder="Catatan Khusus" value="{{ old('catatan') }}">{{ $pengawas->catatan }}</textarea>
+            </div>
           </div>
           
           <div class="mt-3">
