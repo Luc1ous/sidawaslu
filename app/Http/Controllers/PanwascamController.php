@@ -33,13 +33,13 @@ class PanwascamController extends Controller
             'file' => 'required'
         ]);
 
-        Excel::import(new AdHocPanwascamImport, $request->file('file'));
-        return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
-        // try {
-        // } catch (Throwable $e) {
-        //     report($e);
-        //     return redirect()->back()->with('error', 'Data gagal ditambahkan. Pastikan file yang di upload sudah benar !');
-        // }
+        try {
+            Excel::import(new AdHocPanwascamImport, $request->file('file'));
+            return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
+        } catch (Throwable $e) {
+            report($e);
+            return redirect()->back()->with('error', 'Data gagal ditambahkan. Pastikan file yang di upload sudah benar !');
+        }
         
     }
 
