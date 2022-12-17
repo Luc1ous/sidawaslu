@@ -27,11 +27,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/cek', function(){
-    $data = AdHoc::where('keterangan', 'panwascam')->get();
-    dd($data);
-});
-
 // Route Login & Logout
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
