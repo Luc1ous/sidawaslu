@@ -38,7 +38,7 @@ class PanwascamController extends Controller
             return redirect()->back()->with('success', 'Data berhasil di Import ke Database');
         } catch (Throwable $e) {
             report($e);
-            return redirect()->back()->with('error', 'Data gagal ditambahkan. Pastikan file yang di upload sudah benar !');
+            return redirect()->back()->with('error', 'Data gagal ditambahkan. Pastikan file / format file yang di upload sudah benar !');
         }
         
     }
