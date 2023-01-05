@@ -91,9 +91,7 @@
                   <label for="email" class="form-label">Email</label>
                   <input
                     type="text"
-                    class="form-control @error('email')
-                     is-invalid 
-                    @enderror"
+                    class="form-control @error('email') is-invalid @enderror"
                     id="email"
                     name="email"
                     placeholder="Enter your email"
@@ -113,9 +111,7 @@
                     <input
                       type="password"
                       id="password"
-                      class="form-control @error('password')
-                        is-invalid
-                      @enderror"
+                      class="form-control @error('password') is-invalid @enderror"
                       name="password"
                       placeholder="Password"
                       aria-describedby="password"
