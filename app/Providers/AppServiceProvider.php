@@ -30,7 +30,11 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFive();
         config(['app.locale' => 'id']);
         Carbon::setLocale('id');
-        $listTahun = Tahun::orderBy('tahun', 'desc')->get();
-        view()->share('listTahun', $listTahun);
+        try {
+            $listTahun = Tahun::orderBy('tahun', 'desc')->get();
+            return view()->share('listTahun', $listTahun);
+        } catch (\Throwable $th) {
+            return [];
+        }
     }
 }
