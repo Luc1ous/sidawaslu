@@ -12,7 +12,7 @@ class TahunController extends Controller
 {
     public function index()
     {
-        $listTahun = Tahun::all();
+        $listTahun = Tahun::orderBy('tahun', 'desc')->get();
         return view('tahun.index', compact('listTahun'));
     }
 

@@ -19,6 +19,7 @@ class AdHoc extends Model
                     ->orWhere('tahun', 'like', "%".$value."%")
                     ->orWhere('keterangan', 'like', "%".$value."%");
     }
+    
     public function scopeTahun($query, $value){
         return $query->where('tahun', $value);
     }
