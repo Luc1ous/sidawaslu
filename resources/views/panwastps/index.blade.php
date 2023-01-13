@@ -1,4 +1,4 @@
-@extends('base.main', ['title' => 'Data Panwas TPS'])
+@extends('base.main', ['title' => 'Data Pengawas TPS'])
 @section('content')
   <div class="card">
     <div class="card-header">
