@@ -6,27 +6,30 @@ use App\Models\AdHoc;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\AdHocPanwastpsImport;
+use App\Http\Requests\PengawasRequest;
 use App\Http\Requests\PanwastpsRequest;
 
 class PanwastpsController extends Controller
 {
-    public function index($tahun){
+    public function index($tahun)
+    {
         $tahun = $tahun;
         $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Pengawas TPS')->paginate(10);
         return view('panwastps.index', compact('tahun', 'listPengawas'));
     }
 
-    public function search($tahun, Request $request){
+    public function search($tahun, Request $request)
+    {
         $tahun = $tahun;
         $search = $request->search;
-        if(!is_null($request->search)){
+        if (!is_null($request->search)) {
             $listPengawas = AdHoc::tahun($tahun)->ket('Pengawas TPS')
-                            ->where(function ($query) use ($search){
-                                $query->where('nama', 'like', '%'.$search.'%')
-                                ->orWhere('kecamatan', 'like', '%'.$search.'%')
-                                ->orWhere('jenis_kelamin', 'like', '%'.$search.'%')
-                                ->orWhere('pendidikan', 'like', '%'.$search.'%');
-                            })->orderBy('nama', 'asc')->paginate(10);
+                ->where(function ($query) use ($search) {
+                    $query->where('nama', 'like', '%' . $search . '%')
+                        ->orWhere('kecamatan', 'like', '%' . $search . '%')
+                        ->orWhere('jenis_kelamin', 'like', '%' . $search . '%')
+                        ->orWhere('pendidikan', 'like', '%' . $search . '%');
+                })->orderBy('nama', 'asc')->paginate(10);
         } else {
             $listPengawas = AdHoc::where('tahun', $tahun)->where('keterangan', 'Pengawas TPS')->paginate(10);
         }
@@ -34,13 +37,15 @@ class PanwastpsController extends Controller
         return view('panwastps.index', compact('tahun', 'listPengawas', 'search'));
     }
 
-    public function filter($tahun, $filter){
+    public function filter($tahun, $filter)
+    {
         $tahun = $tahun;
-        $listPengawas = AdHoc::tahun($tahun)->ket('pengawas tps')->orderBy($filter, 'asc')->paginate(10); 
+        $listPengawas = AdHoc::tahun($tahun)->ket('pengawas tps')->orderBy($filter, 'asc')->paginate(10);
         return view('panwastps.index', compact('listPengawas', 'tahun'));
     }
 
-    public function import(Request $request){
+    public function import(Request $request)
+    {
         $request->validate([
             'file' => 'required'
         ]);
@@ -53,31 +58,37 @@ class PanwastpsController extends Controller
         }
     }
 
-    public function add($tahun){
+    public function add($tahun)
+    {
         return view('panwastps.add', compact('tahun'));
     }
 
-    public function store(Request $request, $tahun){
-        $request['keterangan'] = 'Pengawas TPS';
-        $request['tahun'] = $tahun;
-        AdHoc::create($request->all());
-        return redirect()->to('/panwastps/'.$tahun)->with('success', 'Data berhasil ditambahkan');
+    public function store(PengawasRequest $request, $tahun)
+    {
+        if ($request->validated()) {
+            $request['keterangan'] = 'Pengawas TPS';
+            $request['tahun'] = $tahun;
+            AdHoc::create($request->all());
+            return redirect()->to('/panwastps/' . $tahun)->with('success', 'Data berhasil ditambahkan');
+        }
     }
 
-    public function edit($tahun, $id){
+    public function edit($tahun, $id)
+    {
         $pengawas = AdHoc::find($id);
         return view('panwastps.edit', compact('pengawas', 'tahun'));
     }
 
-    public function update(Request $request, $tahun, $id){
+    public function update(Request $request, $tahun, $id)
+    {
         $request['tahun'] = $tahun;
         AdHoc::find($id)->update($request->all());
-        return redirect()->to('/panwastps/'.$tahun)->with('success', 'Data berhasil diupdate');
+        return redirect()->to('/panwastps/' . $tahun)->with('success', 'Data berhasil diupdate');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         AdHoc::find($id)->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
-
 }
