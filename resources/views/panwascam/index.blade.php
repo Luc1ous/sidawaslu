@@ -85,6 +85,7 @@
             <tr class="text-nowrap">
               <th>No</th>
               <th>Nama</th>
+              <th>Foto</th>
               <th>Kecamatan</th>
               <th>No Hp</th>
               <th>Jenis Kelamin</th>
@@ -96,51 +97,35 @@
           </thead>
           <tbody>
             @forelse ( $listPengawas as $index => $pengawas )
-              <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header text-center">
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                      <h4>Delete Confirmation</h4>
-                      <p>Apakah Anda yakin ingin menghapus Data : {{ $pengawas->nama }} ?</p>
-                      <p>
-                        <span class="fw-bold">Notice : </span>
-                        Data yang terhapus tidak bisa dikembalikan lagi
-                      </p>
-                      <form action="/panwascam/delete/{{ $pengawas->id }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-outline-danger">Hapus</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <tr>
+            <tr>
                 <td>{{ $listPengawas->firstItem() + $index }}</td>
                 <td>{{ $pengawas->nama }}</td>
+                <td>
+                  <img src="{{ asset('images/'.$pengawas->foto) }}" alt="" width="50">
+                </td>
                 <td>{{ $pengawas->kecamatan }}</td>
                 <td>{{ $pengawas->nomor_hp }}</td>
                 <td>{{ $pengawas->jenis_kelamin }}</td>
                 <td>{{ $pengawas->pendidikan }}</td>
                 <td>{{ $pengawas->tahun }}</td>
                 <td>{{ $pengawas->keterangan }}</td>
-                <td>
+                <td class="">
                   <a href="/panwascam/{{ $tahun }}/{{ $pengawas->id }}/edit" class="btn btn-sm btn-warning">
                     <i class="bi bi-pencil-square"></i>
                     Edit
                   </a>
-                  <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
-                    <i class="bi bi-trash3-fill"></i>
-                    Hapus
-                  </button>
+                  <form action="/panwascam/delete/{{ $pengawas->id }}" method="POST">
+                    @csrf
+                    <button class="btn btn-sm btn-danger">
+                      <i class="bi bi-trash3-fill"></i>
+                      Hapus
+                    </button>
+                  </form>
                 </td>
               </tr>
             @empty
               <tr>
-                <td colspan="9" class="fw-bold text-center">Data kosong / tidak ditemukan</td>
+                <td colspan="10" class="fw-bold text-center">Data kosong / tidak ditemukan</td>
               </tr>
             @endforelse
           </tbody>

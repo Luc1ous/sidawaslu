@@ -5,8 +5,19 @@
         <h3>Tambah Data Pengawas TPS</h3>
       </div>
       <div class="card-body">
-        <form action="/panwastps/{{ $tahun }}/store" method="POST">
+        <form action="/panwastps/{{ $tahun }}/store" method="POST" enctype="multipart/form-data">
           @csrf
+          <div class="row g-2 mb-3">
+            <div class="col">
+              <label for="foto" class="form-label">Foto</label>
+              <input type="file" name="image" accept="image/*" class="form-control @error('image') is-invalid @enderror">
+              @error('image')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+          </div>
           <div class="row g-2 mb-3">
             <div class="col">
               <label for="defaultFormControlInput" class="form-label">Nama Lengkap</label>

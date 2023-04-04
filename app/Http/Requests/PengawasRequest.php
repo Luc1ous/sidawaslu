@@ -41,6 +41,7 @@ class PengawasRequest extends FormRequest
             'alamat' => 'required',
             'pengalaman_kepemiluan' => 'required',
             'catatan' => 'required',
+            'image' => 'max:2048',
         ];
     }
 }

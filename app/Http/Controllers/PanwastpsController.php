@@ -8,6 +8,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\AdHocPanwastpsImport;
 use App\Http\Requests\PengawasRequest;
 use App\Http\Requests\PanwastpsRequest;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class PanwastpsController extends Controller
 {
@@ -65,12 +67,17 @@ class PanwastpsController extends Controller
 
     public function store(PengawasRequest $request, $tahun)
     {
-        if ($request->validated()) {
-            $request['keterangan'] = 'Pengawas TPS';
-            $request['tahun'] = $tahun;
-            AdHoc::create($request->all());
-            return redirect()->to('/panwastps/' . $tahun)->with('success', 'Data berhasil ditambahkan');
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $imageName = $image->hashName();
+            $image->move(public_path('images'), $imageName);
+            $request['foto'] = $imageName;
         }
+        
+        $request['keterangan'] = 'Pengawas TPS';
+        $request["tahun"] = $tahun;
+        AdHoc::create($request->all());
+        return redirect()->to("/panwastps/" . $tahun)->with('success', 'Data berhasil ditambahkan');
     }
 
     public function edit($tahun, $id)
@@ -79,16 +86,32 @@ class PanwastpsController extends Controller
         return view('panwastps.edit', compact('pengawas', 'tahun'));
     }
 
-    public function update(Request $request, $tahun, $id)
+    public function update(PengawasRequest $request, $tahun, $id)
     {
+        $pengawas = AdHoc::find($id);
+        $imageName = '';
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $imageName = $image->hashName();
+            $image->move(public_path('images'), $imageName);
+            if($pengawas->foto) {
+                File::delete('images/'.$pengawas->foto);
+            }
+        } else {
+            $imageName = $pengawas->foto;
+        }
+
+        $request['foto'] = $imageName;
         $request['tahun'] = $tahun;
-        AdHoc::find($id)->update($request->all());
+        $pengawas->update($request->all());
         return redirect()->to('/panwastps/' . $tahun)->with('success', 'Data berhasil diupdate');
     }
 
     public function delete($id)
     {
-        AdHoc::find($id)->delete();
+        $pengawas = AdHoc::find($id);
+        File::delete('images/'.$pengawas->foto);
+        $pengawas->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }

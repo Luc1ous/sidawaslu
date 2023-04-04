@@ -26,17 +26,22 @@ class PanwascamRequest extends FormRequest
         return [
             'nama' => 'required',
             'kecamatan' => 'required',
+            'kelurahan' => 'required',
             'jabatan' => 'required',
             'nik' => 'required',
+            'no_tps' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'nomor_sk' => 'required',
+            'tanggal_sk' => 'required',
             'agama' => 'required',
             'pendidikan' => 'required',
             'pekerjaan' => 'required',
             'alamat' => 'required',
             'nomor_hp' => 'required',
             'pengalaman_kepemiluan' => 'required',
+            'catatan' => 'required',
+            'image' => 'max:2048'
         ];
     }
 }
