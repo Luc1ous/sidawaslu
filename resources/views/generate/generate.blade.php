@@ -15,7 +15,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Login | Sidawaslu</title>
+    <title>Generate ID Card</title>
 
     <meta name="description" content="" />
 
@@ -56,7 +56,6 @@
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
-          <a href="/generate" class="btn btn-primary my-3">Generate ID Card</a>
           @if (session()->has('error'))
             <div class="alert alert-danger alert-dismissible" role="alert">
               {{ session('error') }}
@@ -66,50 +65,29 @@
           <div class="card">
             <div class="card-body">
               <div class="text-center">
-                <img src="../template/assets/img/sidawaslu.png" width="55" class="mb-2">
-                <h4 class="mb-4 fw-bold text-center text-uppercase">Login Sidawaslu</h4>
+                <h4 class="mb-4 fw-bold text-center text-uppercase">Generate ID Card</h4>
               </div>
-              <form class="mb-3" action="/login" method="POST">
+              <form class="mb-3" action="/generate" method="POST">
                 @csrf
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="id" class="form-label">ID Pengawas</label>
                   <input
                     type="text"
-                    class="form-control @error('email') is-invalid @enderror"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
+                    class="form-control @error('id') is-invalid @enderror"
+                    id="id"
+                    name="id"
+                    placeholder="Masukkan ID Pengawas"
                     autofocus
+                    autocomplete="off"
                   />
-                  @error('email')
+                  @error('id')
                     <div class="invalid-feedback">
                       {{  $message  }}
                     </div>
                   @enderror
                 </div>
-                <div class="mb-3 form-password-toggle">
-                  <div class="d-flex justify-content-between">
-                    <label class="form-label" for="password">Password</label>
-                  </div>
-                  <div class="input-group input-group-merge">
-                    <input
-                      type="password"
-                      id="password"
-                      class="form-control @error('password') is-invalid @enderror"
-                      name="password"
-                      placeholder="Password"
-                      aria-describedby="password"
-                    />
-                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                    @error('password')
-                        <div class="invalid-feedback">
-                          {{ $message }}
-                        </div>
-                    @enderror
-                  </div>
-                </div>
                 <div class="mb-3">
-                  <button class="btn btn-success d-grid w-100" type="submit">Sign in</button>
+                  <button class="btn btn-success d-grid w-100" type="submit">Submit</button>
                 </div>
               </form>
             </div>

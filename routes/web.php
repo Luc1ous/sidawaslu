@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdHocController;
 use App\Http\Controllers\CatatanController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GenerateController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PanwascamController;
 use App\Http\Controllers\PanwasdesController;
@@ -27,6 +28,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route Home
+
+
 // Route Login & Logout
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -38,6 +42,11 @@ Route::post('/register', [RegisterController::class, 'register']);
 // Route Dashboard
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
+// Route Generate ID Card
+Route::get('/generate', [GenerateController::class, 'generate'])->middleware('guest');
+Route::post('/generate', [GenerateController::class, 'proses'])->middleware('guest');
+// Route::get('/qrcode', [GenerateController::class, 'qrcode'])->middleware('guest');
+Route::get('/generate/{id}', [GenerateController::class, 'index']);
 
 // Route User
 Route::controller(UserController::class)->middleware('auth')->group(function (){
