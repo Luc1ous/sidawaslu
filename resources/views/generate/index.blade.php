@@ -63,7 +63,11 @@
               </div>
               <div class="card-text text-center">
                 <p class="text-uppercase fw-bold mt-2">ID Card Pengawas Pemilu</p>
-                <img src="{{ url('images/'.$pengawas->foto) }}" class="rounded-circle" width="120" height="125">
+                @if ($pengawas->foto)
+                  <img src="{{ url('images/'.$pengawas->foto) }}" class="rounded-circle" width="120" height="125">
+                @else
+                  <img src="{{ asset('assets/user.png') }}" alt="" class="rounded-circle" width="120" height="125">
+                @endif
                 <p class="mt-3 fw-bold fs-4">{{ $pengawas->nama }}</p>
                 <p>{{ $pengawas->keterangan }} {{ $pengawas->tahun }}</p>
               </div>

@@ -103,7 +103,9 @@
                 <td>{{ $pengawas->id }}</td>
                 <td>{{ $pengawas->nama }}</td>
                 <td>
-                  <img src="{{ asset('images/'.$pengawas->foto) }}" class="rounded-circle" width="50" height="50">
+                  @if ($pengawas->foto)
+                    <img src="{{ asset('images/'.$pengawas->foto) }}" class="rounded-circle" width="50" height="50">
+                  @endif
                 </td>
                 <td>{{ $pengawas->kecamatan }}</td>
                 <td>{{ $pengawas->nomor_hp }}</td>
