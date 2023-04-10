@@ -62,7 +62,7 @@
                 <img src="{{ asset('assets/logo-bawaslu.png') }}" width="180">
               </div>
               <div class="card-text text-center">
-                <p class="text-uppercase fw-bold mt-2">ID Card Pengawas Pemilu</p>
+                <p class="text-uppercase fw-bold mt-2">ID Card Pengawas Ad Hoc</p>
                 @if ($pengawas->foto)
                   <img src="{{ url('images/'.$pengawas->foto) }}" class="rounded-circle" width="120" height="125">
                 @else
