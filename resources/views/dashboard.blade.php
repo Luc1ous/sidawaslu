@@ -8,7 +8,8 @@
         <img src="../template/assets/img/calendar.png" class="me-2" width="30">
         {{ $date }}
       </p>
-      <h2 class="text-dark fw-semibold">Selamat Datang di Sidawaslu</h2>
+      <h2 class="text-dark fw-semibold">Selamat Datang di SIDAWASLU</h2>
+      <h5 class="lh-base">"Sistem Database Pengawas Adhoc Pemilu" Kerjasama Bawaslu Sleman dan Universitas Amikom Yogyakarta</h5>
     </div>                
   </div>
   <h4 class="my-3">Total Seluruh Data Pengawas</h4>
